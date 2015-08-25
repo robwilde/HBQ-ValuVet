@@ -25,13 +25,12 @@
 
 		$columns = array (
 			'cb'            => '<input type="checkbox" />',
-			//			'title' => __( 'Movie' ),
+			'title'         => __( 'Movie' ),
 			'practice_name' => __( 'Practice Name' ),
-			'add_package'   => __( 'Add Package'),
-			'full_name'    => __( 'Name' ),
-//			'last_name'    => __( 'Last Name' ),
-			'mobile'  => __( 'Phone Number' ),
-			'contact_email' => __('eMail'),
+			'add_package'   => __( 'Add Package' ),
+			'full_name'     => __( 'Name' ),
+			'mobile'        => __( 'Phone Number' ),
+			'contact_email' => __( 'eMail' ),
 			'date'          => __( 'Date' )
 		);
 
@@ -47,23 +46,20 @@
 			case 'practice_name' :
 				the_field( 'practice_name', $post->ID );
 				break;
-
 			case 'add_package':
-				$package = get_field('advertisement_package', $post->ID);
+				$package = get_field( 'advertisement_package', $post->ID );
 				echo '$' . $package;
 				break;
 			/* If displaying the 'First Name' column. */
 			case 'full_name' :
-				$full_name = get_field('first_name', $post->ID) .''. get_field('last_name', $post->ID);
+				$full_name = get_field( 'first_name', $post->ID ) . '' . get_field( 'last_name', $post->ID );
 //				the_field( 'first_name', $post->ID );
 				echo $full_name;
 				break;
-
 			case 'mobile' :
-			$phoneNumber = get_field( 'phone_number', $post->ID );
-			echo $phoneNumber;
-			break;
-
+				$phoneNumber = get_field( 'phone_number', $post->ID );
+				echo $phoneNumber;
+				break;
 			case 'contact_email' :
 				the_field( 'contact_email', $post->ID );
 //				echo $phoneNumber;
