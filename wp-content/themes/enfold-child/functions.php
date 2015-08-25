@@ -31,6 +31,7 @@
 			'full_name'     => __( 'Name' ),
 			'mobile'        => __( 'Phone Number' ),
 			'contact_email' => __( 'eMail' ),
+			'_status'       => __( 'Status' ),
 			'date'          => __( 'Date' )
 		);
 
@@ -41,6 +42,8 @@
 	function my_manage_property_columns( $column ) {
 
 		global $post;
+		/* @TODO -------------------------------------------------------- LOGGING --------------------------------------------------- */
+		Debug_Bar_Extender::instance()->trace_var( $post );
 		switch ( $column ) {
 			/* If displaying the 'Practice Name' column. */
 			case 'practice_name' :
@@ -53,7 +56,6 @@
 			/* If displaying the 'First Name' column. */
 			case 'full_name' :
 				$full_name = get_field( 'first_name', $post->ID ) . '' . get_field( 'last_name', $post->ID );
-//				the_field( 'first_name', $post->ID );
 				echo $full_name;
 				break;
 			case 'mobile' :
@@ -62,8 +64,12 @@
 				break;
 			case 'contact_email' :
 				the_field( 'contact_email', $post->ID );
-//				echo $phoneNumber;
 				break;
+
+			case '_status':
+				echo $post->post_status;
+				break;
+
 			/* Just break out of the switch statement for everything else. */
 			default :
 				break;
