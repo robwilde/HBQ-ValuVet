@@ -42,8 +42,6 @@
 	function my_manage_property_columns( $column ) {
 
 		global $post;
-		/* @TODO -------------------------------------------------------- LOGGING --------------------------------------------------- */
-		Debug_Bar_Extender::instance()->trace_var( $post );
 		switch ( $column ) {
 			/* If displaying the 'Practice Name' column. */
 			case 'practice_name' :
