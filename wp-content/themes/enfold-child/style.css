@@ -10,3 +10,8 @@ Template: enfold
 
 
 /*Add your own styles here:*/
+
+#level_one_headline .acf-input {
+    font-weight: bold;
+    font-size: 18px;
+}

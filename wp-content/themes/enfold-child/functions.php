@@ -17,59 +17,9 @@
 	}
 
 	add_action( 'wp_enqueue_scripts', 'wtc_wizard_scripts' );
+
+
 	/*-------------------------------------------------------------------------------
-		Custom Columns
+		ACF Custom actions
 	-------------------------------------------------------------------------------*/
-	add_filter( 'manage_edit-property_columns', 'my_edit_property_columns' );
-	function my_edit_property_columns( $columns ) {
-
-		$columns = array (
-			'cb'            => '<input type="checkbox" />',
-			'title'         => __( 'Movie' ),
-			'practice_name' => __( 'Practice Name' ),
-			'add_package'   => __( 'Add Package' ),
-			'full_name'     => __( 'Name' ),
-			'mobile'        => __( 'Phone Number' ),
-			'contact_email' => __( 'eMail' ),
-			'_status'       => __( 'Status' ),
-			'date'          => __( 'Date' )
-		);
-
-		return $columns;
-	}
-
-	add_action( 'manage_property_posts_custom_column', 'my_manage_property_columns' );
-	function my_manage_property_columns( $column ) {
-
-		global $post;
-		switch ( $column ) {
-			/* If displaying the 'Practice Name' column. */
-			case 'practice_name' :
-				the_field( 'practice_name', $post->ID );
-				break;
-			case 'add_package':
-				$package = get_field( 'advertisement_package', $post->ID );
-				echo '$' . $package;
-				break;
-			/* If displaying the 'First Name' column. */
-			case 'full_name' :
-				$full_name = get_field( 'first_name', $post->ID ) . '' . get_field( 'last_name', $post->ID );
-				echo $full_name;
-				break;
-			case 'mobile' :
-				$phoneNumber = get_field( 'phone_number', $post->ID );
-				echo $phoneNumber;
-				break;
-			case 'contact_email' :
-				the_field( 'contact_email', $post->ID );
-				break;
-
-			case '_status':
-				echo $post->post_status;
-				break;
-
-			/* Just break out of the switch statement for everything else. */
-			default :
-				break;
-		}
-	}
+	require_once (CHILD_PATH_DIR . "/inc/acf-custom.php");

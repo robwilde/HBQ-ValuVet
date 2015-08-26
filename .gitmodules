@@ -1,0 +1,6 @@
+[submodule "wp-content/plugins/acf-rest-api"]
+	path = wp-content/plugins/acf-rest-api
+	url = https://github.com/wp-plugins/wp-rest-api-custom-fields.git
+[submodule "wp-content/plugins/acf-field-type-template"]
+	path = wp-content/plugins/acf-field-type-template
+	url = https://github.com/elliotcondon/acf-field-type-template.git
