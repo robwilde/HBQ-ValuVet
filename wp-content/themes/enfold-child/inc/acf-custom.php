@@ -84,19 +84,8 @@
 						buildingType: null,
 						addressCity: null,
 						addressState: null
-					}
+					};
 					// var $practiceFor, $practiceType, $addressCity, $addressState;
-
-					// count words in field
-					function wordCount(val) {
-						return {
-							charactersNoSpaces: val.replace(/\s+/g, '').length,
-							characters: val.length,
-							words: val.match(/\S+/g).length,
-							lines: val.split(/\r*\n/).length
-						};
-					}
-
 
 					// retrieve PRACTICE IS FOR selected
 					var $acfPracticeFor = $('#acf-field_55dc2db2e9268');
