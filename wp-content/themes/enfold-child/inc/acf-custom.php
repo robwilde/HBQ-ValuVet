@@ -165,13 +165,32 @@
 					};
 
 					// add word count to section
-
+					// SHORT DESCRIPTION 150
 					$('#acf-field_55dc3a802b7a6').counter({
 						type: 'word',
 						goal: 150
 					});
 
+					// SHORT DESCRIPTION 300
 					$('#acf-field_55dc2db2eaed4').counter({
+						type: 'word',
+						goal: 300
+					});
+
+					// BUSINESS DESCRIPTION (Package 3)
+					$('#acf-field_55dc3e01ce02f').counter({
+						type: 'word',
+						goal: 300
+					});
+
+					// BUSINESS OPPORTUNITY (Package 3)
+					$('#acf-field_55dc3e8ace030').counter({
+						type: 'word',
+						goal: 300
+					});
+
+					// BUSINESS LOCATION (Package 3)
+					$('#acf-field_55dc3ea1ce031').counter({
 						type: 'word',
 						goal: 300
 					});
