@@ -67,7 +67,7 @@
 
 		/*
 		 * creating a capture for the generated heading
-		 * [practice_is_for] - [practice_type] - [address_city, address_state]
+		 * [practice_is_for] - [practice_type] [building_type] - [address_city, address_state]
 		 *
 		 */
 		?>
