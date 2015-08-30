@@ -81,23 +81,34 @@
 					var acfFields = {
 						practiceFor: null,
 						practiceType: null,
+						buildingType: null,
 						addressCity: null,
 						addressState: null
 					}
+					// var $practiceFor, $practiceType, $addressCity, $addressState;
 
-//					var $practiceFor, $practiceType, $addressCity, $addressState;
+					// count words in field
+					function wordCount(val) {
+						return {
+							charactersNoSpaces: val.replace(/\s+/g, '').length,
+							characters: val.length,
+							words: val.match(/\S+/g).length,
+							lines: val.split(/\r*\n/).length
+						};
+					}
+
 
 					// retrieve PRACTICE IS FOR selected
-					var $field = $('#acf-field_55dc2db2e9268');
-					$field.on('change', function () {
+					var $acfPracticeFor = $('#acf-field_55dc2db2e9268');
+					$acfPracticeFor.on('change', function () {
 						acfFields.practiceFor = $(this).val();
 						headingField(acfFields);
 					});
 
 
 					// retrieve PRACTICE TYPE selected
-					var $field = $('#acf-field_55dc2db2e8739');
-					$field.on('change', function () {
+					var $acfPracticeType = $('#acf-field_55dc2db2e8739');
+					$acfPracticeType.on('change', function () {
 						acfFields.practiceType = $(this).val();
 						if (acfFields.practiceType == 'Other') {
 							$('#acf-field_55dc2db2e8826').on('change', function () {
@@ -112,40 +123,58 @@
 						}
 					});
 
+
+					// retrieve BUILDING TYPE selected
+					var $acfBuildType = $('#acf-field_55dc564e9f897');
+					$acfBuildType.on('change', function () {
+						acfFields.buildingType = $(this).val();
+						console.log($(this).val());
+						acfFields.buildingType = $(this).val();
+
+						headingField(acfFields);
+					});
+
+
 					// retrieve ADDRESS CITY selected
-					var $field = $('#acf-field_55dc2db2e8b0e');
-					$field.on('change', function () {
+					var $acfAddressCity = $('#acf-field_55dc2db2e8b0e');
+					$acfAddressCity.on('change', function () {
 						acfFields.addressCity = $(this).val();
 						headingField(acfFields);
 					});
 
 					// retrieve ADDRESS CITY selected
-					var $field = $('#acf-field_55dc2db2e8bfa');
-					$field.on('change', function () {
+					var $acfAddressState = $('#acf-field_55dc2db2e8bfa');
+					$acfAddressState.on('change', function () {
 						acfFields.addressState = $(this).val();
 						headingField(acfFields);
 					});
 
+					// creating the heading and/or custom heading prepend/append
 					var $headline = $('#level_one_headline').find('.acf-input');
-					// level 2 & 3 custom headline
-//					var $customHeadLinePrepend = $('.acf-field-55dc2db2eacf2').find('.acf-input-prepend');
-
 					var $customHeadline = $('.acf-field-55dc2db2eacf2').find('.acf-input');
-
-//					var $customHeadLinePrepend = $('.acf-field-55dc2db2eacf2').find('.acf-input-prepend');
-
 
 					function headingField(inputs) {
 						$headline.html(acfFields.practiceFor + ' - '
-							+ acfFields.practiceType + ' - '
+							+ acfFields.practiceType + ' '
+							+ acfFields.buildingType + ' - '
 							+ acfFields.addressCity + ','
 							+ acfFields.addressState);
 
 						$customHeadline.find('.acf-input-prepend').html(acfFields.practiceFor);
-//						$customHeadline.find('.acf-input-wrap').html(acfFields.practiceType);
 						$customHeadline.find('.acf-input-append').html(acfFields.addressCity + ',' + acfFields.addressState);
 					};
 
+					// add word count to section
+
+					$('#acf-field_55dc3a802b7a6').counter({
+						type: 'word',
+						goal: 150
+					});
+
+					$('#acf-field_55dc2db2eaed4').counter({
+						type: 'word',
+						goal: 300
+					});
 
 				});
 

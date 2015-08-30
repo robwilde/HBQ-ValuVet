@@ -8,17 +8,10 @@
 	/*-------------------------------------------------------------------------------
 	Enqueue Script
 	-------------------------------------------------------------------------------*/
-//	add_action( 'wp_enqueue_scripts', 'wtc_wizard_scripts' );
-//	function wtc_wizard_scripts() {
-//
-//		// Only run this code when it is the wizard template
-//		if ( is_page_template( 'page-wizard.php' ) ) {
-//			wp_enqueue_style( 'wtc_wizard_bootstrap_css', CHILD_PATH_URI . '/css/bootstrap.min.css' );
-//			wp_enqueue_style( 'wtc_wizard_fuelux_css', CHILD_PATH_URI . '/css/fuelux.min.css' );
-//			wp_enqueue_script( 'wtc_wizard_bootstrap_js', CHILD_PATH_URI . '/js/bootstrap.min.js', array ( 'jquery' ), '3.2.2', TRUE );
-//			wp_enqueue_script( 'wtc_wizard_fuelux_js', CHILD_PATH_URI . '/js/fuelux.min.js', array ( 'jquery' ), '3.4.0', TRUE );
-//		}
-//	}
+	add_action( 'admin_enqueue_scripts', function(){
+		wp_enqueue_script('word-counter', CHILD_PATH_URI . '/js/jquery.word-and-character-counter.min.js', array('jquery'), '2.4.0', TRUE);
+	});
+
 
 	/*-------------------------------------------------------------------------------
 	Avia builder debug mode
