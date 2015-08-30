@@ -15,7 +15,7 @@
 			'cb'            => '<input type="checkbox" />',
 			'title'         => __( 'Movie' ),
 			'practice_name' => __( 'Practice Name' ),
-			'add_package'   => __( 'Add Package' ),
+			'add_package'   => __( 'Package' ),
 			'full_name'     => __( 'Name' ),
 			'mobile'        => __( 'Phone Number' ),
 			'contact_email' => __( 'eMail' ),
@@ -36,8 +36,23 @@
 				the_field( 'practice_name', $post->ID );
 				break;
 			case 'add_package':
+				/**
+				 *  165 : Package 1 - $165
+				 *  330 : Package 2 - $330
+				 *  550 : Package 3 - $550
+				 */
 				$package = get_field( 'advertisement_package', $post->ID );
-				echo '$' . $package;
+				switch ( $package ) {
+					case "165":
+						echo "P1";
+						break;
+					case "330":
+						echo "P2";
+						break;
+					case "550":
+						echo "P3";
+						break;
+				}
 				break;
 			/* If displaying the 'First Name' column. */
 			case 'full_name' :
@@ -85,7 +100,6 @@
 						addressCity: null,
 						addressState: null
 					};
-					// var $practiceFor, $practiceType, $addressCity, $addressState;
 
 					// retrieve PRACTICE IS FOR selected
 					var $acfPracticeFor = $('#acf-field_55dc2db2e9268');
