@@ -1,11 +1,11 @@
 /*!
- * Fuel UX v3.4.0 
+ * Fuel UX v3.4.0
  * Copyright 2012-2014 ExactTarget
  * Licensed under the BSD-3-Clause license ()
  */
 
 .fuelux {
-  
+
 }@charset "UTF-8";
 .fuelux .clearfix {
   *zoom: 1;
@@ -21,8 +21,8 @@
 }
 @font-face {
   font-family: "fuelux";
-  src: url("../fonts/fuelux.eot");
-  src: url("../fonts/fuelux.eot?#iefix") format("embedded-opentype"), url("../fonts/fuelux.woff") format("woff"), url("../fonts/fuelux.ttf") format("truetype"), url("../fonts/fuelux.svg#fuelux") format("svg");
+  src: url("fonts/fuelux.eot");
+  src: url("fonts/fuelux.eot?#iefix") format("embedded-opentype"), url("fonts/fuelux.woff") format("woff"), url("fonts/fuelux.ttf") format("truetype"), url("fonts/fuelux.svg#fuelux") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -34,7 +34,7 @@
   font-variant: normal !important;
   text-transform: none !important;
   line-height: 1;
-  speak: none;
+  /*speak: none;*/
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -101,7 +101,7 @@
   font-variant: normal !important;
   text-transform: none !important;
   line-height: 1;
-  speak: none;
+  /*speak: none;*/
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   border: 1px solid #adadad;
@@ -149,9 +149,9 @@
 .fuelux .combobox.disabled .input-group-btn {
   cursor: not-allowed;
 }
-.fuelux .combobox input::-ms-clear {
-  display: none;
-}
+/*.fuelux .combobox input::-ms-clear {*/
+  /*display: none;*/
+/*}*/
 .fuelux .datepicker-calendar {
   padding: 16px 16px 0;
   min-height: 262px;
@@ -244,9 +244,9 @@
 .fuelux .datepicker-calendar-days td.selected button {
   color: #8d8787;
 }
-.fuelux .datepicker-calendar-days td.selected.current-day {
-  box-shadow: 0 0 0 1px #fff offset;
-}
+/*.fuelux .datepicker-calendar-days td.selected.current-day {*/
+  /*box-shadow: 0 0 0 1px #fff offset;*/
+/*}*/
 .fuelux .datepicker-calendar-days td.selected.current-day span:hover b,
 .fuelux .datepicker-calendar-days td.selected.current-day span:hover button {
   border-color: #0f5f9f;
@@ -468,9 +468,9 @@
 .fuelux .datepicker-wheels-year .header {
   border-radius: 0 4px 0 0;
 }
-.fuelux .datepicker input::-ms-clear {
-  display: none;
-}
+/*.fuelux .datepicker input::-ms-clear {*/
+  /*display: none;*/
+/*}*/
 .fuelux .infinitescroll {
   overflow-y: auto;
 }
@@ -513,7 +513,7 @@
   font-variant: normal !important;
   text-transform: none !important;
   line-height: 1;
-  speak: none;
+  /*speak: none;*/
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   bottom: 0;
@@ -716,9 +716,9 @@
 .fuelux .pillbox .suggest > li:hover {
   background-color: #eeeeee;
 }
-.fuelux .pillbox input::-ms-clear {
-  display: none;
-}
+/*.fuelux .pillbox input::-ms-clear {*/
+  /*display: none;*/
+/*}*/
 .fuelux .placard {
   display: inline-block;
   position: relative;
@@ -733,9 +733,9 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.fuelux .placard[data-ellipsis="true"] input.placard-field::-ms-clear {
-  display: none;
-}
+/*.fuelux .placard[data-ellipsis="true"] input.placard-field::-ms-clear {*/
+  /*display: none;*/
+/*}*/
 .fuelux .placard[data-ellipsis="true"] textarea.placard-field[readonly] {
   overflow: hidden;
 }
@@ -1314,9 +1314,9 @@
   /* Magic number */
   padding: 0px 25px 0px 7px;
 }
-.fuelux .spinbox .spinbox-input::-ms-clear {
-  display: none;
-}
+/*.fuelux .spinbox .spinbox-input::-ms-clear {*/
+  /*display: none;*/
+/*}*/
 .fuelux .spinbox .btn {
   position: relative;
   width: 20px;
@@ -1356,9 +1356,9 @@
   left: -1px;
   top: 0px;
 }
-.fuelux .spinbox input::-ms-clear {
-  display: none;
-}
+/*.fuelux .spinbox input::-ms-clear {*/
+  /*display: none;*/
+/*}*/
 .fuelux .scheduler {
   /* -------------------------------
 	START DATE/TIME
@@ -1562,15 +1562,15 @@ END
 .fuelux .scheduler .repeat-end .form-group {
   margin-left: 0;
 }
-.fuelux .scheduler input::-ms-clear {
-  display: none;
-}
+/*.fuelux .scheduler input::-ms-clear {*/
+  /*display: none;*/
+/*}*/
 .fuelux .search.disabled .input-group-btn {
   cursor: not-allowed;
 }
-.fuelux .search input::-ms-clear {
-  display: none;
-}
+/*.fuelux .search input::-ms-clear {*/
+  /*display: none;*/
+/*}*/
 .fuelux .selectlist.disabled {
   cursor: not-allowed;
 }
@@ -1882,10 +1882,10 @@ END
   margin: 0;
 }
 .fuelux .text-sm {
-  font-size: 14px * 0.85;
+  font-size: 14px;
 }
 .fuelux .text-lg {
-  font-size: 14px * 1.25;
+  font-size: 14px;
 }
 .fuelux h1,
 .fuelux .h1 {
