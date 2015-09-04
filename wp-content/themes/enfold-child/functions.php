@@ -8,11 +8,12 @@
 	/*-------------------------------------------------------------------------------
 	Enqueue Script
 	-------------------------------------------------------------------------------*/
-	add_action( 'admin_enqueue_scripts', function(){
-		wp_enqueue_script('word-counter', CHILD_PATH_URI . '/js/jquery.word-and-character-counter.min.js', array('jquery'), '2.4.0', TRUE);
-	});
+	add_action( 'admin_enqueue_scripts', function () {
 
-
+		wp_enqueue_style( 'valuvet-admin-css', CHILD_PATH_URI . '/css/valuvet-admin-styles.css', '1.0.0' );
+		wp_enqueue_script( 'valuvet-admin', CHILD_PATH_URI . '/js/admin.js', array ( 'jquery' ), '1.0.0', TRUE );
+		wp_enqueue_script( 'word-counter', CHILD_PATH_URI . '/js/jquery.word-and-character-counter.min.js', array ( 'jquery' ), '2.4.0', TRUE );
+	} );
 	/*-------------------------------------------------------------------------------
 	Avia builder debug mode
 	-------------------------------------------------------------------------------*/
@@ -25,11 +26,11 @@
 	/*-------------------------------------------------------------------------------
 	Avia builder Autoload Shortcodes
 	-------------------------------------------------------------------------------*/
-	add_filter('avia_load_shortcodes', 'avia_include_shortcode_template', 15, 1);
-	function avia_include_shortcode_template($paths)
-	{
+	add_filter( 'avia_load_shortcodes', 'avia_include_shortcode_template', 15, 1 );
+	function avia_include_shortcode_template( $paths ) {
+
 		$template_url = get_stylesheet_directory();
-		array_unshift($paths, $template_url.'/shortcodes/');
+		array_unshift( $paths, $template_url . ' / shortcodes / ' );
 
 		return $paths;
 	}
@@ -41,9 +42,8 @@
 	add_theme_support( 'add_avia_builder_post_type_option' );
 
 	/*-------------------------------------------------------------------------------
-	WTC Actions and Filters - add PROPERTY to use the ADVANCED LAYOUT BUIILDER
+	WTC Actions and Filters - add PROPERTY to use the ADVANCED LAYOUT BUILDER
 	-------------------------------------------------------------------------------*/
-
 	require_once( CHILD_PATH_DIR . '/inc/wtc-hooks.php' );
 
 	/*-------------------------------------------------------------------------------

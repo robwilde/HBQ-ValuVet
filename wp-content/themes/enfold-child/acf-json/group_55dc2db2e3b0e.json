@@ -1,0 +1,2531 @@
+{
+    "key": "group_55dc2db2e3b0e",
+    "title": "Property",
+    "fields": [
+        {
+            "key": "field_55dc2db2e7951",
+            "label": "Referal\/Package",
+            "name": "referal\/package",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_55dc2db2e7a4f",
+            "label": "Advertisement Package",
+            "name": "advertisement_package",
+            "type": "select",
+            "instructions": "What level of Advertising would you like",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 50,
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "165": "Package 1 - $165",
+                "330": "Package 2 - $330",
+                "550": "Package 3 - $550"
+            },
+            "default_value": [
+                165
+            ],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": "",
+            "disabled": 0,
+            "readonly": 0
+        },
+        {
+            "key": "field_55dc2db2e7b39",
+            "label": "Referal Source",
+            "name": "referal_source",
+            "type": "select",
+            "instructions": "How did you hear about Vet\u2019s Practice Market Place?",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 50,
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Valuvet Newsletter": "Valuvet Newsletter",
+                "Conference": "Conference",
+                "Referral by Colleague": "Referral by Colleague",
+                "Refered by Purchaser": "Refered by Purchaser",
+                "ValuVet Consultant": "ValuVet Consultant",
+                "Internet Search": "Internet Search",
+                "Magazine Advertisement": "Magazine Advertisement",
+                "Direct Mail Received": "Direct Mail Received",
+                "Other": "Other"
+            },
+            "default_value": {
+                "Please select an option": "Please select an option"
+            },
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": "",
+            "disabled": 0,
+            "readonly": 0
+        },
+        {
+            "key": "field_55dc2db2e7c1e",
+            "label": "Other Source",
+            "name": "other_source",
+            "type": "text",
+            "instructions": "Please add info about other source",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_55dc2db2e7b39",
+                        "operator": "==",
+                        "value": "Other"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55dc2db2e7d10",
+            "label": "Your Contact Details",
+            "name": "your_contact_details",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_55dc2db2e7e38",
+            "label": "Title",
+            "name": "contact_title",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 20,
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Mr": "Mr",
+                "Mrs": "Mrs",
+                "Miss": "Miss",
+                "Ms": "Ms",
+                "Dr": "Dr",
+                "Proff": "Proff"
+            },
+            "default_value": {
+                "": ""
+            },
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": "",
+            "disabled": 0,
+            "readonly": 0
+        },
+        {
+            "key": "field_55dc2db2e7f36",
+            "label": "First Name",
+            "name": "first_name",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 40,
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55dc2db2e8037",
+            "label": "Last Name",
+            "name": "last_name",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 40,
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55dc2db2e8138",
+            "label": "Email",
+            "name": "contact_email",
+            "type": "email",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 40,
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_55dc2db2e8232",
+            "label": "Phone",
+            "name": "phone_number",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 30,
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55dc2db2e835b",
+            "label": "Advertisement Enquiry Contact Number",
+            "name": "use_enquiry_number",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 30,
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Use the same phone as above": "Use the same phone as above",
+                "Please use a different phone number": "Please use a different phone number"
+            },
+            "default_value": {
+                "Use the same phone as above": "Use the same phone as above"
+            },
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": "",
+            "disabled": 0,
+            "readonly": 0
+        },
+        {
+            "key": "field_55dc2db2e846a",
+            "label": "Enquiry Number",
+            "name": "enquiry_number",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_55dc2db2e835b",
+                        "operator": "==",
+                        "value": "Please use a different phone number"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55dc2db2e8567",
+            "label": "Practice Details",
+            "name": "practice_details",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_55dc2db2e8650",
+            "label": "Practice Name",
+            "name": "practice_name",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 100,
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55dc2db2e8739",
+            "label": "Type of Practice",
+            "name": "practice_type",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 50,
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Small Animal": "Small Animal",
+                "Large Animal": "Large Animal",
+                "Mixed Animal": "Mixed Animal",
+                "Specialist": "Specialist",
+                "Mobile Service": "Mobile Service",
+                "Vacant Premises": "Vacant Premises",
+                "Other": "Other"
+            },
+            "default_value": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": "",
+            "disabled": 0,
+            "readonly": 0
+        },
+        {
+            "key": "field_55dc564e9f897",
+            "label": "Building Type",
+            "name": "building_type",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 50,
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Hospital": "Hospital (Large Building)",
+                "Clinic": "Clinic (Small Building)",
+                "Surgery": "Surgery (Room)"
+            },
+            "default_value": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": "",
+            "disabled": 0,
+            "readonly": 0
+        },
+        {
+            "key": "field_55dc2db2e8826",
+            "label": "Other Type",
+            "name": "other_type",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_55dc2db2e8739",
+                        "operator": "==",
+                        "value": "other"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": 50,
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55dc2db2e8914",
+            "label": "Address",
+            "name": "address",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "esc_html": 0
+        },
+        {
+            "key": "field_55dc2db2e8a0d",
+            "label": "Street",
+            "name": "address_street",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 40,
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55dc2db2e8b0e",
+            "label": "City",
+            "name": "address_city",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 20,
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55dc2db2e8bfa",
+            "label": "State",
+            "name": "address_state",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 20,
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55dc2db2e8ce3",
+            "label": "Postal Code",
+            "name": "address_postcode",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 20,
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": 4,
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55dc2db2e8de4",
+            "label": "Staff",
+            "name": "staff",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "esc_html": 0
+        },
+        {
+            "key": "field_55dc2db2e8ecc",
+            "label": "Full Time Vets",
+            "name": "full_time_vets",
+            "type": "select",
+            "instructions": "Number of full-time vet equivalents (40hrs)",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 33,
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "1": 1,
+                "1-2": "1-2",
+                "2+": "2+",
+                "2-3": "2-3",
+                "3+": "3+",
+                "3-4": "3-4",
+                "4+": "4+"
+            },
+            "default_value": {
+                "": ""
+            },
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": "",
+            "disabled": 0,
+            "readonly": 0
+        },
+        {
+            "key": "field_55dc2db2e8fb1",
+            "label": "Full Time Nurses",
+            "name": "full_time_nurses",
+            "type": "number",
+            "instructions": "Number of full-time nurse equivalents (38hrs)",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 33,
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": 0,
+            "max": 99,
+            "step": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55dc2db2e9096",
+            "label": "Practice Manager",
+            "name": "practice_manager",
+            "type": "select",
+            "instructions": "Is practice manager in use?",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 33,
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "true": "Yes",
+                "false": "No"
+            },
+            "default_value": {
+                "false": "No"
+            },
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": "",
+            "disabled": 0,
+            "readonly": 0
+        },
+        {
+            "key": "field_55dc2db2e917f",
+            "label": "Property Sales",
+            "name": "property_sales",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_55dc2db2e9268",
+            "label": "Practice is for",
+            "name": "practice_is_for",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 100,
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "For Sale": "For Sale",
+                "For Lease": "For Lease",
+                "For Sale\/Lease": "For Sale\/Lease"
+            },
+            "default_value": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": "",
+            "disabled": 0,
+            "readonly": 0
+        },
+        {
+            "key": "field_55dc2db2e935b",
+            "label": "Practice Lease Details",
+            "name": "practice_lease_details",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_55dc2db2e9268",
+                        "operator": "==",
+                        "value": "For Lease"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_55dc2db2e9268",
+                        "operator": "==",
+                        "value": "For Sale\/Lease"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": 40,
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55dc2db2e9445",
+            "label": "Stock - Dollar Value",
+            "name": "stock_dollar_value",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_55dc2db2e9268",
+                        "operator": "==",
+                        "value": "For Sale"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_55dc2db2e9268",
+                        "operator": "==",
+                        "value": "For Sale\/Lease"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": 20,
+                "class": "",
+                "id": "stock_value"
+            },
+            "default_value": 0,
+            "placeholder": "",
+            "prepend": "$",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55dc2db2e953c",
+            "label": "Equipment - Dollar Value",
+            "name": "equipment_dollar_value",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_55dc2db2e9268",
+                        "operator": "==",
+                        "value": "For Sale"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_55dc2db2e9268",
+                        "operator": "==",
+                        "value": "For Sale\/Lease"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": 20,
+                "class": "",
+                "id": ""
+            },
+            "default_value": 0,
+            "placeholder": "",
+            "prepend": "$",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55dc2db2e963f",
+            "label": "Goodwill - Dollar Value",
+            "name": "goodwill_dollar_value",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_55dc2db2e9268",
+                        "operator": "==",
+                        "value": "For Sale"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_55dc2db2e9268",
+                        "operator": "==",
+                        "value": "For Sale\/Lease"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": 20,
+                "class": "",
+                "id": ""
+            },
+            "default_value": 0,
+            "placeholder": "",
+            "prepend": "$",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55dc2db2e9742",
+            "label": "Real Estate is for",
+            "name": "realestate_is_for",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 50,
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "for_sale": "For Sale",
+                "for_lease": "For Lease"
+            },
+            "default_value": {
+                "": ""
+            },
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": "",
+            "disabled": 0,
+            "readonly": 0
+        },
+        {
+            "key": "field_55dc2db2e9843",
+            "label": "Real Estate Lease Details",
+            "name": "real_estate_lease_details",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_55dc2db2e9742",
+                        "operator": "==",
+                        "value": "for_lease"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": 50,
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55dc2db2e994c",
+            "label": "Property Real Estate Value",
+            "name": "property_realestate_value",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_55dc2db2e9742",
+                        "operator": "==",
+                        "value": "for_sale"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": 50,
+                "class": "",
+                "id": ""
+            },
+            "default_value": 0,
+            "placeholder": "",
+            "prepend": "$",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55dc2db2e9a4f",
+            "label": "Asking Price",
+            "name": "asking_price",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "esc_html": 0
+        },
+        {
+            "key": "field_55dc2db2e9b51",
+            "label": "Asking Price",
+            "name": "total_value",
+            "type": "text",
+            "instructions": "Total Property Value",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 50,
+                "class": "",
+                "id": "total_property_value"
+            },
+            "default_value": 0,
+            "placeholder": "",
+            "prepend": "$",
+            "append": "",
+            "maxlength": 7,
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55dc2db2e9c54",
+            "label": "Show Asking Price",
+            "name": "show_asking_price",
+            "type": "select",
+            "instructions": "Yes or Price on Application",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 50,
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "yes": "Yes",
+                "poa": "POA"
+            },
+            "default_value": {
+                "": ""
+            },
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": "",
+            "disabled": 0,
+            "readonly": 0
+        },
+        {
+            "key": "field_55dc2db2e9d57",
+            "label": "Extra Details",
+            "name": "extra_details",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "esc_html": 0
+        },
+        {
+            "key": "field_55dc2db2e9e47",
+            "label": "ValuVet Valuation",
+            "name": "valuvet_valuation",
+            "type": "select",
+            "instructions": "Valuation by ValuVet",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 50,
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "TRUE": "Yes",
+                "FALSE": "No"
+            },
+            "default_value": {
+                "": ""
+            },
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": "",
+            "disabled": 0,
+            "readonly": 0
+        },
+        {
+            "key": "field_55dc2db2e9f2b",
+            "label": "Practice Report",
+            "name": "valuvet_practice_report",
+            "type": "select",
+            "instructions": "Practice Report by ValuVet",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 50,
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "TRUE": "Yes",
+                "FALSE": "No"
+            },
+            "default_value": {
+                "": ""
+            },
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": "",
+            "disabled": 0,
+            "readonly": 0
+        },
+        {
+            "key": "field_55dc2db2eab01",
+            "label": "Advertising Info",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_55dc35be5fd2e",
+            "label": "Package 1 - $165",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_55dc2db2e7a4f",
+                        "operator": "==",
+                        "value": "165"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "esc_html": 0
+        },
+        {
+            "key": "field_55dc36615fd2f",
+            "label": "Package 2 - $330",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_55dc2db2e7a4f",
+                        "operator": "==",
+                        "value": "330"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "esc_html": 0
+        },
+        {
+            "key": "field_55dc366f5fd30",
+            "label": "Package 3 - $550",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_55dc2db2e7a4f",
+                        "operator": "==",
+                        "value": "550"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "esc_html": 0
+        },
+        {
+            "key": "field_55dd29170cae6",
+            "label": "NO EXTRA",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_55dc61325be8b",
+                        "operator": "==",
+                        "value": "No Upgrade"
+                    },
+                    {
+                        "field": "field_55dd2bd18e20a",
+                        "operator": "==",
+                        "value": "No Upgrade"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": 10,
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "esc_html": 0
+        },
+        {
+            "key": "field_55dd26a3d701d",
+            "label": "1 to 2 Extra",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_55dc2db2e7a4f",
+                        "operator": "==",
+                        "value": "330"
+                    },
+                    {
+                        "field": "field_55dc61325be8b",
+                        "operator": "==",
+                        "value": "Upgrade to Level 2"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": 10,
+                "class": "",
+                "id": ""
+            },
+            "message": "$165",
+            "esc_html": 0
+        },
+        {
+            "key": "field_55dd2761d701e",
+            "label": "1 to 3 Extra",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_55dc2db2e7a4f",
+                        "operator": "==",
+                        "value": "550"
+                    },
+                    {
+                        "field": "field_55dc61325be8b",
+                        "operator": "==",
+                        "value": "Upgrade to Level 3"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": 10,
+                "class": "",
+                "id": ""
+            },
+            "message": "$385",
+            "esc_html": 0
+        },
+        {
+            "key": "field_55dd27d4d701f",
+            "label": "2 to 3 Extra",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_55dc2db2e7a4f",
+                        "operator": "==",
+                        "value": "550"
+                    },
+                    {
+                        "field": "field_55dd2bd18e20a",
+                        "operator": "==",
+                        "value": "Upgrade to Level 3"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": 10,
+                "class": "",
+                "id": ""
+            },
+            "message": "$165",
+            "esc_html": 0
+        },
+        {
+            "key": "field_55dc61325be8b",
+            "label": "Upgrade Option",
+            "name": "upgrade_option_one",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_55dc2db2e7a4f",
+                        "operator": "==",
+                        "value": "165"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": 20,
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "No Upgrade": "No Upgrade",
+                "Upgrade to Level 2": "Upgrade to Level 2",
+                "Upgrade to Level 3": "Upgrade to Level 3"
+            },
+            "default_value": {
+                "No Upgrade": "No Upgrade"
+            },
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "disabled": 0,
+            "readonly": 0
+        },
+        {
+            "key": "field_55dd2bd18e20a",
+            "label": "Upgrade Option",
+            "name": "upgrade_option_two",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_55dc2db2e7a4f",
+                        "operator": "==",
+                        "value": "330"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": 20,
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "No Upgrade": "No Upgrade",
+                "Upgrade to Level 3": "Upgrade to Level 3"
+            },
+            "default_value": {
+                "No Upgrade": "No Upgrade"
+            },
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "disabled": 0,
+            "readonly": 0
+        },
+        {
+            "key": "field_55e8e07175706",
+            "label": "STD  Package",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_55dc61325be8b",
+                        "operator": "==",
+                        "value": "No Upgrade"
+                    },
+                    {
+                        "field": "field_55dd2bd18e20a",
+                        "operator": "==",
+                        "value": "No Upgrade"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": 70,
+                "class": "",
+                "id": ""
+            },
+            "message": "NO Extras Added",
+            "esc_html": 0
+        },
+        {
+            "key": "field_55dd2065e9fca",
+            "label": "Level 2 EXTRA",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_55dc61325be8b",
+                        "operator": "==",
+                        "value": "Upgrade to Level 2"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": 70,
+                "class": "",
+                "id": ""
+            },
+            "message": "1) Custom Headline\r\n2) Single Photo Image\r\n3) Short description 300 words",
+            "esc_html": 0
+        },
+        {
+            "key": "field_55dc62a6ec645",
+            "label": "Level 3 EXTRA",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_55dc61325be8b",
+                        "operator": "==",
+                        "value": "Upgrade to Level 3"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_55dd2bd18e20a",
+                        "operator": "==",
+                        "value": "Upgrade to Level 3"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": 70,
+                "class": "",
+                "id": ""
+            },
+            "message": "1) Add your advertisement to featured property slider\r\n2) Include a link to a full property profile\r\n3) Include an extra description about the business, the opportunity and location\r\n4) Include a bullet list of additional information and services, Facilities, Animals Treated, Professional Services, Ancillary Services\r\n5) Include gallery of up to 8 images with captions",
+            "esc_html": 0
+        },
+        {
+            "key": "field_55e27b46b8025",
+            "label": "Headline",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_55dc2db2e7a4f",
+                        "operator": "==",
+                        "value": "165"
+                    },
+                    {
+                        "field": "field_55dc61325be8b",
+                        "operator": "==",
+                        "value": "No Upgrade"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_55e5795883209",
+                        "operator": "==",
+                        "value": "Standard Headline"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": 80,
+                "class": "",
+                "id": "level_one_headline"
+            },
+            "message": "Practice For - Practice Type  Building Type - City,State",
+            "esc_html": 0
+        },
+        {
+            "key": "field_55dc2db2eacf2",
+            "label": "Custom Headline",
+            "name": "custom_headline",
+            "type": "text",
+            "instructions": "Practice For - CUSTOM SECTION - City,State",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_55e5795883209",
+                        "operator": "==",
+                        "value": "Custom Headline"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": 80,
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Enter your custom headline",
+            "prepend": "-",
+            "append": "-",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55e5795883209",
+            "label": "Headline Select",
+            "name": "headline_select",
+            "type": "select",
+            "instructions": "Use the created or custom headline",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_55dc2db2e7a4f",
+                        "operator": "!=",
+                        "value": "165"
+                    },
+                    {
+                        "field": "field_55dc61325be8b",
+                        "operator": "!=",
+                        "value": "No Upgrade"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_55dc2db2e7a4f",
+                        "operator": "==",
+                        "value": "550"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": 20,
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Standard Headline": "Standard Headline",
+                "Custom Headline": "Custom Headline"
+            },
+            "default_value": {
+                "Standard Headline": "Standard Headline"
+            },
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "disabled": 0,
+            "readonly": 0
+        },
+        {
+            "key": "field_55dc3a802b7a6",
+            "label": "Short Description - 150 words",
+            "name": "short_description_1",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_55dc2db2e7a4f",
+                        "operator": "==",
+                        "value": "165"
+                    },
+                    {
+                        "field": "field_55dc61325be8b",
+                        "operator": "==",
+                        "value": "No Upgrade"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": 100,
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Enter the description description",
+            "maxlength": "",
+            "rows": 8,
+            "new_lines": "wpautop",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55dc2db2eaed4",
+            "label": "Short Description - 300 words",
+            "name": "short_description_2",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_55dc2db2e7a4f",
+                        "operator": "!=",
+                        "value": "165"
+                    },
+                    {
+                        "field": "field_55dc61325be8b",
+                        "operator": "!=",
+                        "value": "No Upgrade"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": 100,
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Enter the description description",
+            "maxlength": "",
+            "rows": 8,
+            "new_lines": "wpautop",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55dc2db2eafc8",
+            "label": "Primary Image",
+            "name": "primary_image",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_55dc2db2e7a4f",
+                        "operator": "==",
+                        "value": "165"
+                    },
+                    {
+                        "field": "field_55dc61325be8b",
+                        "operator": "==",
+                        "value": "Upgrade to Level 2"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_55dc2db2e7a4f",
+                        "operator": "==",
+                        "value": "165"
+                    },
+                    {
+                        "field": "field_55dc61325be8b",
+                        "operator": "==",
+                        "value": "Upgrade to Level 3"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_55dc2db2e7a4f",
+                        "operator": "==",
+                        "value": "330"
+                    },
+                    {
+                        "field": "field_55dd2bd18e20a",
+                        "operator": "==",
+                        "value": "No Upgrade"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_55dc2db2e7a4f",
+                        "operator": "==",
+                        "value": "330"
+                    },
+                    {
+                        "field": "field_55dd2bd18e20a",
+                        "operator": "==",
+                        "value": "Upgrade to Level 3"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_55dc2db2e7a4f",
+                        "operator": "==",
+                        "value": "550"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": 30,
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "square",
+            "library": "uploadedTo",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_55dc2db2eb0d0",
+            "label": "Image Gallery",
+            "name": "image_gallery_2",
+            "type": "gallery",
+            "instructions": "Add up to 8 images of your Practice",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_55dc2db2e7a4f",
+                        "operator": "!=",
+                        "value": "165"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_55dc61325be8b",
+                        "operator": "!=",
+                        "value": "No Upgrade"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": 70,
+                "class": "",
+                "id": ""
+            },
+            "min": "",
+            "max": 8,
+            "preview_size": "shop_thumbnail",
+            "library": "uploadedTo",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_55dc3dddce02e",
+            "label": "Package 3 Fields",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_55dc2db2e7a4f",
+                        "operator": "==",
+                        "value": "165"
+                    },
+                    {
+                        "field": "field_55dc61325be8b",
+                        "operator": "==",
+                        "value": "Upgrade to Level 3"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_55dc2db2e7a4f",
+                        "operator": "==",
+                        "value": "330"
+                    },
+                    {
+                        "field": "field_55dd2bd18e20a",
+                        "operator": "==",
+                        "value": "Upgrade to Level 3"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_55dc2db2e7a4f",
+                        "operator": "==",
+                        "value": "550"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_55dc3e01ce02f",
+            "label": "Business Description",
+            "name": "business_description",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": 150,
+            "rows": 4,
+            "new_lines": "wpautop",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55dc3e8ace030",
+            "label": "Business Opportunity",
+            "name": "business_opportunity",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": 150,
+            "rows": 4,
+            "new_lines": "wpautop",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55dc3ea1ce031",
+            "label": "Business Location",
+            "name": "business_location",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": 150,
+            "rows": 4,
+            "new_lines": "wpautop",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55dc3f669f896",
+            "label": "Facilities",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_55dc2db2e7a4f",
+                        "operator": "==",
+                        "value": "550"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_55dc61325be8b",
+                        "operator": "==",
+                        "value": "Upgrade to Level 3"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_55dd2bd18e20a",
+                        "operator": "==",
+                        "value": "Upgrade to Level 3"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_55dc56609f898",
+            "label": "Ownership",
+            "name": "ownership",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 50,
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "owned": "Building Owned",
+                "rented": "Building Rented"
+            },
+            "default_value": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "disabled": 0,
+            "readonly": 0
+        },
+        {
+            "key": "field_55dc57289f899",
+            "label": "Building Area",
+            "name": "building_area",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 33,
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Floor space in m2",
+            "prepend": "",
+            "append": "m2",
+            "min": "",
+            "max": "",
+            "step": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55dc574e9f89a",
+            "label": "Branch Clinics",
+            "name": "branch_clinics",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 33,
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Number of Branch Clinics",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55dc57849f89b",
+            "label": "Days Open",
+            "name": "days_open",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 33,
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Number of Days open per week",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55dc57edf469a",
+            "label": "Do the Facilities include:",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "esc_html": 0
+        },
+        {
+            "key": "field_55dc5802f469b",
+            "label": "Kennels",
+            "name": "kennels",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 25,
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0
+        },
+        {
+            "key": "field_55dc583af469c",
+            "label": "Stables",
+            "name": "stables",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 25,
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0
+        },
+        {
+            "key": "field_55dc584ff469d",
+            "label": "Off Street Parking",
+            "name": "off_street_parking",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 25,
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0
+        },
+        {
+            "key": "field_55dc5865f469e",
+            "label": "Car Spaces",
+            "name": "car_spaces",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_55dc584ff469d",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": 25,
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55dc58aaf469f",
+            "label": "Computer Software",
+            "name": "computer_software",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 50,
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "RxWorks": "RxWorks",
+                "Cornerstone": "Cornerstone",
+                "Vet Aid Dos": "Vet Aid Dos",
+                "Vet Aid Visual": "Vet Aid Visual",
+                "NetVet": "NetVet",
+                "Vetcare": "Vetcare",
+                "Vetware": "Vetware",
+                "Quickvet": "Quickvet",
+                "Custom Built Program": "Custom Built Program",
+                "Other": "Other"
+            },
+            "default_value": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": "",
+            "disabled": 0,
+            "readonly": 0
+        },
+        {
+            "key": "field_55dc59f0f46a0",
+            "label": "Number of Computer",
+            "name": "number_of_computer",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 50,
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55dc5a77450df",
+            "label": "Other Software",
+            "name": "other_software",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_55dc58aaf469f",
+                        "operator": "==",
+                        "value": "Other"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55dc664af5233",
+            "label": "Animals Treated",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_55dc2db2e7a4f",
+                        "operator": "==",
+                        "value": "550"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_55dc61325be8b",
+                        "operator": "==",
+                        "value": "Upgrade to Level 3"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_55dd2bd18e20a",
+                        "operator": "==",
+                        "value": "Upgrade to Level 3"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_55dc6669f5235",
+            "label": "small animal %",
+            "name": "small_animal_treated",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 25,
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "%",
+            "min": "",
+            "max": 100,
+            "step": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55dc6699f5236",
+            "label": "equine %",
+            "name": "equine_treated",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 25,
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "%",
+            "min": "",
+            "max": 100,
+            "step": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55dc66d3f5237",
+            "label": "Bovine %",
+            "name": "bovine_treated",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 25,
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "%",
+            "min": "",
+            "max": 100,
+            "step": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55dc6713f5238",
+            "label": "Other %",
+            "name": "other_treated",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 25,
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "%",
+            "min": "",
+            "max": 100,
+            "step": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55dc6763f5239",
+            "label": "Small Animal Choices",
+            "name": "small_animal_choices",
+            "type": "checkbox",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 25,
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Canine": "Canine",
+                "Feline": "Feline",
+                "Avian": "Avian",
+                "Exotics": "Exotics",
+                "Fauna": "Fauna"
+            },
+            "default_value": [],
+            "layout": "vertical",
+            "toggle": 0
+        },
+        {
+            "key": "field_55dc67a9f523a",
+            "label": "Equine Choices",
+            "name": "equine_choices",
+            "type": "checkbox",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 25,
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Pleasure": "Pleasure",
+                "Stud": "Stud",
+                "Stables": "Stables"
+            },
+            "default_value": [],
+            "layout": "vertical",
+            "toggle": 0
+        },
+        {
+            "key": "field_55dc67d5f523b",
+            "label": "Bovine Choices",
+            "name": "bovine_choices",
+            "type": "checkbox",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 25,
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Beef": "Beef",
+                "Dairy": "Dairy",
+                "Stud": "Stud"
+            },
+            "default_value": [],
+            "layout": "vertical",
+            "toggle": 0
+        },
+        {
+            "key": "field_55dc6802f523c",
+            "label": "Other Choices",
+            "name": "other_choices",
+            "type": "checkbox",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 25,
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Porcine": "Porcine",
+                "Ovine": "Ovine",
+                "Caprine": "Caprine",
+                "Camelid": "Camelid"
+            },
+            "default_value": [],
+            "layout": "vertical",
+            "toggle": 0
+        },
+        {
+            "key": "field_55dc685ff523d",
+            "label": "Other Animals Treated Cont...",
+            "name": "other_animals_treated_cont",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 3,
+            "new_lines": "br",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55dc63f2f522d",
+            "label": "Services",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_55dc2db2e7a4f",
+                        "operator": "==",
+                        "value": "550"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_55dd2bd18e20a",
+                        "operator": "==",
+                        "value": "Upgrade to Level 3"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_55dc61325be8b",
+                        "operator": "==",
+                        "value": "Upgrade to Level 3"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_55dc649af522f",
+            "label": "Professional Services",
+            "name": "professional_services",
+            "type": "checkbox",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Medicine": "Medicine",
+                "Surgery": "Surgery",
+                "Dentistry": "Dentistry",
+                "Behavior": "Behavior",
+                "Emergency Service": "Emergency Service",
+                "Diagnostic Laboratory": "Diagnostic Laboratory",
+                "Radiology": "Radiology",
+                "Ultrasound": "Ultrasound",
+                "Specialist": "Specialist",
+                "House Calls": "House Calls",
+                "Endoscopy": "Endoscopy"
+            },
+            "default_value": [],
+            "layout": "horizontal",
+            "toggle": 0
+        },
+        {
+            "key": "field_55dc654bf5230",
+            "label": "Other Professional Services",
+            "name": "other_professional_services",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 3,
+            "new_lines": "br",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_55dc656ef5231",
+            "label": "Ancillary Services",
+            "name": "ancillary_services",
+            "type": "checkbox",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Grooming": "Grooming",
+                "Puppy School": "Puppy School",
+                "Boarding": "Boarding",
+                "Merchandising": "Merchandising",
+                "Export Certificate": "Export Certificate"
+            },
+            "default_value": [],
+            "layout": "horizontal",
+            "toggle": 0
+        },
+        {
+            "key": "field_55dc659df5232",
+            "label": "Other Ancillary Services",
+            "name": "other_ancillary_services",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 3,
+            "new_lines": "br",
+            "readonly": 0,
+            "disabled": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "property"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "permalink",
+        "excerpt",
+        "custom_fields",
+        "discussion",
+        "comments",
+        "revisions",
+        "slug",
+        "author",
+        "format",
+        "page_attributes",
+        "featured_image",
+        "categories",
+        "tags",
+        "send-trackbacks"
+    ],
+    "active": 1,
+    "description": "",
+    "modified": 1441371132
+}

@@ -8,8 +8,7 @@
 	/*-------------------------------------------------------------------------------
 		Custom Columns
 	-------------------------------------------------------------------------------*/
-	add_filter( 'manage_edit-property_columns', 'my_edit_property_columns' );
-	function my_edit_property_columns( $columns ) {
+	add_filter( 'manage_edit-property_columns', function ( $columns ) {
 
 		$columns = array (
 			'cb'            => '<input type="checkbox" />',
@@ -24,10 +23,8 @@
 		);
 
 		return $columns;
-	}
-
-	add_action( 'manage_property_posts_custom_column', 'my_manage_property_columns' );
-	function my_manage_property_columns( $column ) {
+	} );
+	add_action( 'manage_property_posts_custom_column', function ( $column ) {
 
 		global $post;
 		switch ( $column ) {
@@ -73,8 +70,19 @@
 			default :
 				break;
 		}
+	} );
+	/*-------------------------------------------------------------------------------
+	ACF Filter Field
+	-------------------------------------------------------------------------------*/
+	function my_acf_save_post( $post_id ) {
+
+		echo '<script type="javascript">console.log({$post_id})</script>';
+		/* @TODO -------------------------- LOGGING ---------------------------- */
+		Debug_Bar_Extender::instance()->trace_var( $post_id, 'SAVE_POST' );
 	}
 
+	// run before ACF saves the $_POST['acf'] data
+	add_action( 'acf/save_post', 'my_acf_save_post', 1 );
 	/*-------------------------------------------------------------------------------
 	ACF Javascript
 	-------------------------------------------------------------------------------*/
@@ -91,8 +99,123 @@
 		<script type = "text/javascript">
 			(function ($) {
 
+				$.fn.money = function (number, format) {
+
+					var $this = this;
+
+					if (!number || typeof(number) === 'object') {
+						//incase just parameters are entered and not a number
+						var format = number;
+						number = $this.html();
+					}
+
+
+					var format = format || {},
+						commas = format.commas || true,
+						symbol = format.symbol || "";
+
+					number = parseFloat(number)
+						.toFixed(2);
+
+					if (commas) {
+
+						var count = 0;
+						var numArr = number.toString().split("");
+
+						var len = numArr.length - 6;
+
+						for (var i = len; i > 0; i = i - 3) {
+							numArr.splice(i, 0, ",");
+
+						}
+
+						number = numArr.join("");
+
+					}
+
+					if (typeof symbol === 'string') {
+						number = symbol + number;
+
+					}
+
+					$this.val(number);
+
+					return $this;
+
+				};
+
+				// ------------------------------------------------------------
+				// function created for displaying log info
+				// ------------------------------------------------------------
+
+				var meLog = function (logArray) {
+
+					var logObj = logArray || {},
+						value = logObj.value || false,
+						name = logObj.name || null;
+
+					if (name !== null) {
+						console.info(name);
+					}
+					console.log(value);
+
+				};
+
+				// ------------------------------------------------------------
+				// function filter for fields after load
+				// ------------------------------------------------------------
 				acf.add_action('ready', function ($el) {
 
+					// ------------------------------------------------------------
+					// Updating the Advertising package on save after add upgrade
+					// ------------------------------------------------------------
+
+					// selecting the Advertising Package
+					var $acfAddPack = $('#acf-field_55dc2db2e7a4f');
+					var getTestField = {};
+					var $package;
+					$acfAddPack.on('change', function () {
+						$package = $(this).val();
+					});
+
+					// update package with option from P1 to P2 or P3
+					var $acfUpOptionOne = $('#acf-field_55dc61325be8b');
+					$acfUpOptionOne.on('change', function () {
+						var $option = $(this).val();
+
+						switch ($option) {
+							case 'Upgrade to Level 2':
+								$acfAddPack.val('330');
+								break;
+							case 'Upgrade to Level 3':
+								$acfAddPack.val('550');
+								break;
+							default :
+								$acfAddPack.val('165');
+						}
+
+					});
+
+
+					// update package with option from P2 to P3
+					var $acfUpOptionTwo = $('#acf-field_55dd2bd18e20a');
+					$acfUpOptionTwo.on('change', function () {
+						var $option = $(this).val();
+
+						switch ($option) {
+							case 'Upgrade to Level 3':
+								$acfAddPack.val('550');
+								break;
+							default :
+								$acfAddPack.val('330');
+						}
+					});
+
+					// ------------------------------------------------------------
+					// Creating the Headline - Advertising Info
+					// ------------------------------------------------------------
+
+					// fields for the headline
 					var acfFields = {
 						practiceFor: null,
 						practiceType: null,
@@ -115,8 +238,6 @@
 						acfFields.practiceType = $(this).val();
 						if (acfFields.practiceType == 'Other') {
 							$('#acf-field_55dc2db2e8826').on('change', function () {
-								console.info('other');
-								console.log($(this).val());
 								acfFields.practiceType = $(this).val();
 								headingField(acfFields);
 
@@ -131,9 +252,6 @@
 					var $acfBuildType = $('#acf-field_55dc564e9f897');
 					$acfBuildType.on('change', function () {
 						acfFields.buildingType = $(this).val();
-						console.log($(this).val());
-						acfFields.buildingType = $(this).val();
-
 						headingField(acfFields);
 					});
 
@@ -167,6 +285,10 @@
 						$customHeadline.find('.acf-input-append').html(acfFields.addressCity + ',' + acfFields.addressState);
 					};
 
+					// ------------------------------------------------------------
+					// Add word count to text areas
+					// ------------------------------------------------------------
+
 					// add word count to section
 					// SHORT DESCRIPTION 150
 					$('#acf-field_55dc3a802b7a6').counter({
@@ -197,6 +319,62 @@
 						type: 'word',
 						goal: 300
 					});
+
+
+					// ------------------------------------------------------------
+					// Addition of currency fields and filter number to currency
+					// ------------------------------------------------------------
+
+					// set stock_dollar_value
+					var $acfStock = $('#acf-field_55dc2db2e9445');
+					$acfStock.on('change', function () {
+						var $thisValue = $(this).val();
+						$acfStock.money($thisValue, {commas: true});
+						setTotalValue()
+
+					});
+					// equipment_dollar_value
+					var $acfEquipment = $('#acf-field_55dc2db2e953c');
+					$acfEquipment.on('change', function () {
+						var $thisValue = $(this).val();
+						$acfEquipment.money($thisValue, {commas: true});
+						setTotalValue()
+					});
+					// goodwill_dollar_value
+					var $acfGoodwill = $('#acf-field_55dc2db2e963f');
+					$acfGoodwill.on('change', function () {
+						var $thisValue = $(this).val();
+						setTotalValue()
+						$acfGoodwill.money($thisValue, {commas: true});
+					});
+					// property_realestate_value
+					var $acfProperty = $('#acf-field_55dc2db2e994c');
+					$acfProperty.on('change', function () {
+						var $thisValue = $(this).val();
+						setTotalValue()
+						$acfProperty.money($thisValue, {commas: true});
+					});
+
+					// total_value
+					var $acfTotal = $('#acf-field_55dc2db2e9b51');
+
+					function setTotalValue() {
+						//	convert currency to Number for addition
+						function getNumber(currency) {
+							if (currency == 0) {
+								return currency;
+							}
+							return Number(currency.replace(/[^0-9\.]+/g, ""));
+						}
+
+						// create total
+						var totalValue = parseInt(getNumber($acfStock.val()))
+							+ parseInt(getNumber($acfEquipment.val()))
+							+ parseInt(getNumber($acfGoodwill.val()))
+							+ parseInt(getNumber($acfProperty.val()));
+						// set total as currency and update
+						$acfTotal.money(totalValue, {commas: true})
+					}
 
 				});
 
