@@ -72,9 +72,8 @@
 		}
 	} );
 	/*-------------------------------------------------------------------------------
-	ACF Filter Field
+	ACF Filter Field - run after ACF saves the $_POST['acf'] data
 	-------------------------------------------------------------------------------*/
-	// run after ACF saves the $_POST['acf'] data
 	add_action( 'acf/save_post', function ( $post_id ) {
 
 		// STATE | POST ID | PACKAGE LEVEL No |
@@ -117,17 +116,10 @@
 		}
 	}, 100 );
 	/*-------------------------------------------------------------------------------
-	ACF Javascript
+	ACF Javascript - created to modify and update fields in the properties post_type
 	-------------------------------------------------------------------------------*/
 	add_action( 'acf/input/admin_footer', function () {
-
-		/*
-		 * creating a capture for the generated heading
-		 * [practice_is_for] - [practice_type] [building_type] - [address_city, address_state]
-		 *
-		 */
 		?>
-
 
 		<script type = "text/javascript">
 			(function ($) {
