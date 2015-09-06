@@ -4,3 +4,6 @@
 [submodule "wp-content/plugins/acf-field-type-template"]
 	path = wp-content/plugins/acf-field-type-template
 	url = https://github.com/elliotcondon/acf-field-type-template.git
+[submodule "wp-content/plugins/wtc-dev-plugin"]
+	path = wp-content/plugins/wtc-dev-plugin
+	url = https://github.com/robwilde/wtc-dev-plugin.git

@@ -93,25 +93,28 @@
 			default:
 				$package = 'ERROR';
 		}
-
 		$property_id = $address_state . '-' . $post_id . '-' . $package;
-		$post_array = array (
+		$post_array  = array (
 			'ID'         => $post_id,
 			'post_title' => $property_id
 		);
-
 		$post_title = get_the_title( $post_id );
-
 		//	update the post title
 		if ( $property_id !== $post_title ) {
+			// did the update work OK
 			wp_update_post( $post_array, TRUE );
 			if ( is_wp_error( $post_id ) ) {
+				// capture the errors and write to the WP Log
 				$errors = $post_id->get_error_messages();
-				/* @TODO -------------------------------------------------------- LOGGING --------------------------------------------------- */
-				Debug_Bar_Extender::instance()->trace_var( $errors );
+				if ( function_exists( '_log' ) ) {
+					_log( array (
+						'FILE_NAME'      => basename( __FILE__ ),
+						'LINE'           => ( __LINE__ ),
+						'WP_UPDATE_POST' => $errors
+					) );
+				}
 			}
 		}
-
 	}, 100 );
 	/*-------------------------------------------------------------------------------
 	ACF Javascript
