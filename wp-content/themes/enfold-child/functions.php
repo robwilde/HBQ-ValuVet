@@ -6,6 +6,21 @@
 	define( 'CHILD_PATH_URI', get_stylesheet_directory_uri() );
 	define( 'CHILD_PATH_DIR', get_stylesheet_directory() );
 	/*-------------------------------------------------------------------------------
+	Logging Function
+	-------------------------------------------------------------------------------*/
+	if ( ! function_exists( '_log' ) ) {
+		function _log( $message ) {
+			if ( WP_DEBUG === TRUE ) {
+				if ( is_array( $message ) || is_object( $message ) ) {
+					error_log( print_r( $message, TRUE ) );
+				} else {
+					error_log( $message );
+				}
+			}
+		}
+	}
+
+	/*-------------------------------------------------------------------------------
 	Enqueue Script
 	-------------------------------------------------------------------------------*/
 	add_action( 'admin_enqueue_scripts', function () {
