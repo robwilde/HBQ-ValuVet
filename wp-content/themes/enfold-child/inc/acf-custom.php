@@ -74,15 +74,45 @@
 	/*-------------------------------------------------------------------------------
 	ACF Filter Field
 	-------------------------------------------------------------------------------*/
-	function my_acf_save_post( $post_id ) {
+	// run after ACF saves the $_POST['acf'] data
+	add_action( 'acf/save_post', function ( $post_id ) {
 
-		echo '<script type="javascript">console.log({$post_id})</script>';
-		/* @TODO -------------------------- LOGGING ---------------------------- */
-		Debug_Bar_Extender::instance()->trace_var( $post_id, 'SAVE_POST' );
-	}
+		// STATE | POST ID | PACKAGE LEVEL No |
+		$address_state         = get_field( 'address_state' );
+		$advertisement_package = get_field( 'advertisement_package' );
+		switch ( $advertisement_package ) {
+			case '165':
+				$package = 'P1';
+				break;
+			case '330':
+				$package = 'P2';
+				break;
+			case '550':
+				$package = 'P3';
+				break;
+			default:
+				$package = 'ERROR';
+		}
 
-	// run before ACF saves the $_POST['acf'] data
-	add_action( 'acf/save_post', 'my_acf_save_post', 1 );
+		$property_id = $address_state . '-' . $post_id . '-' . $package;
+		$post_array = array (
+			'ID'         => $post_id,
+			'post_title' => $property_id
+		);
+
+		$post_title = get_the_title( $post_id );
+
+		//	update the post title
+		if ( $property_id !== $post_title ) {
+			wp_update_post( $post_array, TRUE );
+			if ( is_wp_error( $post_id ) ) {
+				$errors = $post_id->get_error_messages();
+				/* @TODO -------------------------------------------------------- LOGGING --------------------------------------------------- */
+				Debug_Bar_Extender::instance()->trace_var( $errors );
+			}
+		}
+
+	}, 100 );
 	/*-------------------------------------------------------------------------------
 	ACF Javascript
 	-------------------------------------------------------------------------------*/
