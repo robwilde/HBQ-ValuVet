@@ -1664,15 +1664,22 @@
                 [
                     {
                         "field": "field_55dc2db2e7a4f",
-                        "operator": "!=",
-                        "value": "165"
+                        "operator": "==",
+                        "value": "550"
                     }
                 ],
                 [
                     {
                         "field": "field_55dc61325be8b",
-                        "operator": "!=",
-                        "value": "No Upgrade"
+                        "operator": "==",
+                        "value": "Upgrade to Level 3"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_55dd2bd18e20a",
+                        "operator": "==",
+                        "value": "Upgrade to Level 3"
                     }
                 ]
             ],
@@ -2527,5 +2534,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1441371132
+    "modified": 1441580188
 }

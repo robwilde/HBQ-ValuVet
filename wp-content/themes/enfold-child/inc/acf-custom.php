@@ -315,6 +315,13 @@
 					// ------------------------------------------------------------
 
 					// add word count to section
+
+					// CUSTOM HEADLINE wod count
+					$('#acf-field_55dc2db2eacf2').counter({
+						type: 'word',
+						goal: 8
+					});
+
 					// SHORT DESCRIPTION 150
 					$('#acf-field_55dc3a802b7a6').counter({
 						type: 'word',
