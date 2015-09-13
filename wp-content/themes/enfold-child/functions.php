@@ -66,5 +66,19 @@
 	-------------------------------------------------------------------------------*/
 	require_once( CHILD_PATH_DIR . "/inc/acf-custom.php" );
 
+	/*-------------------------------------------------------------------------------
+		Auto assign WP POST Featured image from ACF primary_image
+	-------------------------------------------------------------------------------*/
+	function acf_set_featured_image( $value, $post_id, $field  ){
 
+		if($value != ''){
+		delete_post_thumbnail( $post_id);
+			//Add the value which is the image ID to the _thumbnail_id meta data for the current post
+			add_post_meta($post_id, '_thumbnail_id', $value);
+		}
 
+		return $value;
+	}
+
+	// acf/update_value/name={$field_name} - filter for a specific field based on it's name
+	add_filter('acf/update_value/name=primary_image', 'acf_set_featured_image', 10, 3);
