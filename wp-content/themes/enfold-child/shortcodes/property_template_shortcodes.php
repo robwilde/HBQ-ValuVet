@@ -23,14 +23,12 @@
 		}
 		/* add shortcode Function here */
 
-
-		/* PROPERTY ADDRESS */
+		/*-------------------------------------------------------------------------------
+			PROPERTY ADDRESS
+		-------------------------------------------------------------------------------*/
 
 		/**/
-		public static function property_address( $atts ) {
-			extract( shortcode_atts( array(
-				'post_id' => get_the_ID()
-			), $atts ) );
+		public static function property_address() {
 
 			$out = '<h6>Business Name:</strong></h6>';
 			$out .= '<p>' . get_field( 'practice_name' ) . '</p>';
@@ -42,35 +40,21 @@
 		}
 		/**/
 
-		/* PROPERTY OVERVIEW DESCRIPTION */
+		/*-------------------------------------------------------------------------------
+			PROPERTY OVERVIEW DESCRIPTION
+		-------------------------------------------------------------------------------*/
 
 		/**/
-		public static function property_overview_desc( $atts ) {
-			extract( shortcode_atts( array(
-				'post_id' => get_the_ID()
-			), $atts ) );
-
+		public static function property_overview_desc() {
 
 			$out = '<h6>Overview Description:</h6>';
 			$out .= '<p>';
 
 			$upgrade_option_one  = get_field( 'upgrade_option_one' );
 			$upgrade_option_two  = get_field( 'upgrade_option_two' );
-			$short_description_1 = get_field( 'short_description_1' );
-			$short_description_2 = get_field( 'short_description_2' );
 
-			/* check package upgrade level and display approprate shot desctiption */
-			/**
-			 * if ($upgrade_option_one) {
-			 * $short_description_1 = get_field('short_description_1');
-			 * $out .= $short_description_1;
-			 * } else if ($upgrade_option_two) {
-			 * $short_description_2 = get_field('short_description_2');
-			 * $out .= $short_description_2;
-			 * }
-			 * /**/
-			$out .= $short_description_1;
-			$out .= $short_description_2;
+			$out .= get_field( 'short_description_1' );
+			$out .= get_field( 'short_description_2' );
 
 			$out .= '</p>';
 
@@ -78,78 +62,46 @@
 		}
 		/**/
 
-
-		/* PROPERTY PRICE */
+		/*-------------------------------------------------------------------------------
+			PROPERTY PRICE
+		-------------------------------------------------------------------------------*/
 
 		/**/
-		public static function property_price( $atts ) {
-			extract( shortcode_atts( array(
-				'post_id' => get_the_ID()
-			), $atts ) );
+		public static function property_price() {
 
+			$show_asking_price = get_field( 'show_asking_price' );
+			$total_value       = get_field( 'total_value' );
 
-			if ( get_field( 'show_asking_price' ) == 'poa' ) {
-
-				$out = '<h3 class="asking_price">P.O.A.</h3>';
-
-			} else if ( get_field( 'show_asking_price' ) == 'yes' ) {
-
-				$asking_price = get_field( 'total_value' );
-				$out          = '<h3 class="asking_price"> $' . $asking_price . '</h3>';
-			}
+			$out = ( $show_asking_price == 'yes' )
+				? '<h3 class="asking_price"> $' . $total_value . '</h3>'
+				: '<h3 class="asking_price">P.O.A.</h3>';
 
 			return $out;
 		}
+
+		/*-------------------------------------------------------------------------------
+			PROPERTY OVERVIEW SNAPSHOT
+		-------------------------------------------------------------------------------*/
+
 		/**/
+		public static function property_snapshot() {
 
-		/* PROPERTY OVERVIEW SNAPSHOT */
-
-		/**/
-		public static function property_snapshot( $atts ) {
-			extract( shortcode_atts( array(
-				'post_id' => get_the_ID()
-			), $atts ) );
-
-
-			if ( get_field( 'practice_type' ) == 'other' ) {
-				$other_type          = get_field( 'other_type' );
-				$practice_type_label = $other_type;
-			} else {
-				$practice_type       = get_field_object( 'practice_type' );
-				$practice_type_value = get_field( 'practice_type' );
-				$practice_type_label = $practice_type['choices'][ $practice_type_value ];
-			}
-
-			$building_type       = get_field_object( 'building_type' );
-			$building_type_value = get_field( 'building_type' );
-			$building_type_label = $building_type['choices'][ $building_type_value ];
-
-			$practice_is_for       = get_field_object( 'practice_is_for' );
-			$practice_is_for_value = get_field( 'practice_is_for' );
-			$practice_is_for_label = $practice_is_for['choices'][ $practice_is_for_value ];
-
-			$realestate_is_for       = get_field_object( 'realestate_is_for' );
-			$realestate_is_for_value = get_field( 'realestate_is_for' );
-			$realestate_is_for_label = $realestate_is_for['choices'][ $realestate_is_for_value ];
-
+			$practice_type       = get_field( 'practice_type' );
+			$practice_type_label = ( $practice_type != 'other' )
+				? $practice_type
+				: get_field( 'other_type' );
 
 			$out = '<ul>';
 			$out .= '<li><em>Practice Type:</em> ' . $practice_type_label . '</li>';
-			$out .= '<li><em>Building Type:</em> ' . $building_type_label . '</li>';
-			$out .= '<li><em>Business:</em> ' . $practice_is_for_label . '</li>';
-			$out .= '<li><em>Building:</em> ' . $realestate_is_for_label . '</li>';
+			$out .= '<li><em>Building Type:</em> ' . get_field( 'building_type' ) . '</li>';
+			$out .= '<li><em>Business:</em> ' . get_field( 'practice_is_for' ) . '</li>';
+			$out .= '<li><em>Building:</em> ' . get_field( 'realestate_is_for' ) . '</li>';
 
-			if ( get_field( 'valuvet_valuation' ) == 'TRUE' ) {
-				$out .= '<li><em>ValuVet Valuation:</em> Yes </li>';
-			} else {
-				$out .= '<li><em>ValuVet Valuation:</em> No </li>';
-			}
+			$valuvet_valuation = ( get_field( 'valuvet_valuation' ) ) ? 'Yes' : 'No';
+			$out .= '<li><em>ValuVet Valuation:</em> ' . $valuvet_valuation . ' </li>';
 
-			if ( get_field( 'valuvet_practice_report' ) == 'TRUE' ) {
-				$out .= '<li><em>ValuVet Report:</em> Yes </li>';
-			} else {
-				$out .= '<li><em>ValuVet Report:</em> No </li>';
-			}
+			$valuvet_practice_report = ( get_field( 'valuvet_practice_report' ) ) ? 'Yes' : 'No';
+			$out .= '<li><em>ValuVet Report:</em> ' . $valuvet_practice_report . ' </li>';
 
 			$out .= '</ul>';
 
@@ -157,24 +109,20 @@
 		}
 		/**/
 
-		/* TYPE OF PRACTICE */
+		/*-------------------------------------------------------------------------------
+			TYPE OF PRACTICE
+		-------------------------------------------------------------------------------*/
 
 		/**/
-		public static function property_type_of_practice( $atts ) {
-
-			//       global $post;
-
-			extract( shortcode_atts( array(
-				'post_id' => get_the_ID()
-			), $atts ) );
-
+		public static function property_type_of_practice() {
 
 			$out = '<h4>Type of Practice</h4>';
 			$out .= '<ul>';
 
-			$practice_type       = get_field_object( 'practice_type' );
-			$practice_type_value = get_field( 'practice_type' );
-			$practice_type_label = $practice_type['choices'][ $practice_type_value ];
+			$practice_type       = get_field( 'practice_type' );
+			$practice_type_label = ( $practice_type != 'other' )
+				? $practice_type
+				: get_field( 'other_type' );
 
 			$out .= '<li><em>Practice Type:</em> ' . $practice_type_label . '</li>';
 
@@ -213,13 +161,12 @@
 		}
 		/**/
 
-		/* STAFF */
+		/*-------------------------------------------------------------------------------
+			STAFF
+		-------------------------------------------------------------------------------*/
 
 		/**/
-		public static function property_staff( $atts ) {
-			extract( shortcode_atts( array(
-				'post_id' => get_the_ID()
-			), $atts ) );
+		public static function property_staff() {
 
 			$full_time_vets       = get_field_object( 'full_time_vets' );
 			$full_time_vets_value = get_field( 'full_time_vets' );
@@ -245,14 +192,12 @@
 		}
 		/**/
 
-		/* FACILITIES */
+		/*-------------------------------------------------------------------------------
+			FACILITIES
+		-------------------------------------------------------------------------------*/
 
 		/**/
-		public static function property_facilities( $atts ) {
-			extract( shortcode_atts( array(
-				'post_id' => get_the_ID()
-			), $atts ) );
-
+		public static function property_facilities() {
 
 			$building_area      = get_field( 'building_area' );
 			$branch_clinics     = get_field( 'branch_clinics' );
@@ -379,25 +324,24 @@
 		}
 		/**/
 
-		/* PROFESSIONAL SERVICES */
+		/*-------------------------------------------------------------------------------
+			PROFESSIONAL SERVICES
+		-------------------------------------------------------------------------------*/
 
 		/**/
-		public static function property_services_professional( $atts ) {
-			extract( shortcode_atts( array(
-				'post_id' => get_the_ID()
-			), $atts ) );
+		public static function property_services_professional() {
 
-			$professional_services         = get_field_object( 'professional_services' );
-			$professional_services_value   = $professional_services['value'];
-			$professional_services_choices = $professional_services['choices'];
-			$other_professional_services   = get_field( 'other_professional_services' );
+			$out                         = '';
+			$professional_services       = get_field_object( 'professional_services' );
+			$professional_services_value = $professional_services['value'];
+			$other_professional_services = get_field( 'other_professional_services' );
 
 			if ( $professional_services_value ) {
 				$out .= '<h4>Professional Services</h4>';
 				$out .= '<ul>';
 
 				foreach ( $professional_services_value as $professional_service ) {
-					$out .= '<li>' . $professional_services_choices[ $professional_service ] . '</li>';
+					$out .= '<li>' . $professional_service . '</li>';
 				}
 			}
 
@@ -410,25 +354,25 @@
 		}
 		/**/
 
-		/* ANCILLARY SERVICES */
+		/*-------------------------------------------------------------------------------
+			ANCILLARY SERVICES
+		-------------------------------------------------------------------------------*/
 
 		/**/
-		public static function property_services_ancillary( $atts ) {
-			extract( shortcode_atts( array(
-				'post_id' => get_the_ID()
-			), $atts ) );
+		public static function property_services_ancillary() {
 
-			$ancillary_services         = get_field_object( 'ancillary_services' );
-			$ancillary_services_value   = $ancillary_services['value'];
-			$ancillary_services_choices = $ancillary_services['choices'];
-			$other_ancillary_services   = get_field( 'other_ancillary_services' );
+			$out                      = '';
+			$ancillary_service_field  = get_field( 'ancillary_services' );
+			$ancillary_services       = get_field_object( 'ancillary_services' );
+			$ancillary_services_value = $ancillary_services['value'];
+			$other_ancillary_services = get_field( 'other_ancillary_services' );
 
 			if ( $ancillary_services_value ) {
 				$out .= '<h4>Ancillary Services</h4>';
 				$out .= '<ul>';
 
 				foreach ( $ancillary_services_value as $ancillary_service ) {
-					$out .= '<li>' . $ancillary_services_choices[ $ancillary_service ] . '</li>';
+					$out .= '<li>' . $ancillary_service . '</li>';
 				}
 			}
 
@@ -441,43 +385,36 @@
 		}
 		/**/
 
-		/* THE BUSINESS */
+		/*-------------------------------------------------------------------------------
+			THE BUSINESS
+		-------------------------------------------------------------------------------*/
 
 		/**/
-		public static function property_desc_business( $atts ) {
-			extract( shortcode_atts( array(
-				'post_id' => get_the_ID()
-			), $atts ) );
+		public static function property_desc_business() {
 
-			$out = get_field( 'business_description' );
-
-			return $out;
+			return get_field( 'business_description' );
 		}
 		/**/
 
-		/* THE OPPORTUNITY */
+		/*-------------------------------------------------------------------------------
+			THE OPPORTUNITY
+		-------------------------------------------------------------------------------*/
 
 		/**/
-		public static function property_desc_opportunity( $atts ) {
-			extract( shortcode_atts( array(
-				'post_id' => get_the_ID()
-			), $atts ) );
+		public static function property_desc_opportunity() {
 
-			$out = get_field( 'business_opportunity' );
-
-			return $out;
+			return get_field( 'business_opportunity' );
 		}
 		/**/
 
-
-		/* THE LOCATION */
+		/*-------------------------------------------------------------------------------
+			THE LOCATION
+		-------------------------------------------------------------------------------*/
 
 		/**/
-		public static function property_desc_location( $atts ) {
+		public static function property_desc_location() {
 
-			$out = get_field( 'business_location' );
-
-			return $out;
+			return get_field( 'business_location' );
 		}
 		/**/
 

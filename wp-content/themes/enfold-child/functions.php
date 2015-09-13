@@ -63,7 +63,7 @@
 		}
 
 		return $value;
-	} );
+	}, 10, 3 );
 
 	/*-------------------------------------------------------------------------------
 		Change AVIA LAYOUT BUILDER PORTFOLIO GRID to include CUSTOM POST TYPEs
