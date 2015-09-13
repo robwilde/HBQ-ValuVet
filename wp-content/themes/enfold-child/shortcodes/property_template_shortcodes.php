@@ -485,9 +485,6 @@ class VALUVET_SHORTCODES
     /**/
     public static function property_desc_location($atts)
     {
-        extract(shortcode_atts(array(
-            'post_id' => get_the_ID()
-        ), $atts));
 
         $out = get_field('business_location');
 

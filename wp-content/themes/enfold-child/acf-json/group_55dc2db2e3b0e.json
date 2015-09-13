@@ -1763,7 +1763,7 @@
             },
             "default_value": "",
             "placeholder": "",
-            "maxlength": 150,
+            "maxlength": "",
             "rows": 4,
             "new_lines": "wpautop",
             "readonly": 0,
@@ -1784,7 +1784,7 @@
             },
             "default_value": "",
             "placeholder": "",
-            "maxlength": 150,
+            "maxlength": "",
             "rows": 4,
             "new_lines": "wpautop",
             "readonly": 0,
@@ -1805,7 +1805,7 @@
             },
             "default_value": "",
             "placeholder": "",
-            "maxlength": 150,
+            "maxlength": "",
             "rows": 4,
             "new_lines": "wpautop",
             "readonly": 0,
@@ -2534,5 +2534,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1441580188
+    "modified": 1442078130
 }
