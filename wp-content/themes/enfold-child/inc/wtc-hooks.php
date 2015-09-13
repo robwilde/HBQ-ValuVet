@@ -1,14 +1,15 @@
 <?php
 
-	/*======================================================================*/
+	/*-------------------------------------------------------------------------------
+			Adding CPT to AVIA Custom Builder
+	-------------------------------------------------------------------------------*/
 
-	/** ADDING CPT TO THE AVIA CUSTOM BUILDER TO SHOW THE CONTENT EDITOR */
 	/**
 	 * @param $metabox
 	 *
 	 * @return mixed
 	 */
-	function add_builder_to_posttype( $metabox ) {
+	add_filter( 'avf_builder_boxes', function ( $metabox ) {
 
 		// Custom Post Types
 		$cpt_array = array(
@@ -25,7 +26,4 @@
 		}
 
 		return $metabox;
-	}
-
-	add_filter( 'avf_builder_boxes', 'add_builder_to_posttype' );
-
+	} );
