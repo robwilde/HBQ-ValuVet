@@ -227,15 +227,15 @@
 						) );
 
 						if ( $style == "big_thumb" && $first ) {
-							$output .= "<a class='avia-gallery-big fakeLightbox $imagelink $crop_big_preview_thumbnail $custom_link_class' href='" . $link[0] . "'  data-onclick='1' title='" . $description . "' ><span class='avia-gallery-big-inner' $markup_url>";
-							$output .= "	<img width='" . $prev[1] . "' height='" . $prev[2] . "' src='" . $prev[0] . "' title='" . $title . "' alt='" . $alt . "' />";
+							$output .= "<a class='avia-gallery-big fakeLightbox $imagelink $crop_big_preview_thumbnail $custom_link_class' href='" . $link[0] . "'  data-onclick='1'><span class='avia-gallery-big-inner' $markup_url>";
+							$output .= "	<img width='" . $prev[1] . "' height='" . $prev[2] . "' src='" . $prev[0] . "' alt='" . $alt . "' />";
 							if ( $caption ) {
 								$output .= "	<span class='avia-gallery-caption'>{$caption}</span>";
 							}
 							$output .= "</span></a>";
 						}
 
-						$thumbs .= " <a href='" . $link[0] . "' data-rel='gallery-" . self::$gallery . "' data-prev-img='" . $prev[0] . "' {$class} data-onclick='{$counter}' title='" . $description . "' $markup_url><img {$tooltip} src='" . $img[0] . "' width='" . $img[1] . "' height='" . $img[2] . "'  title='" . $title . "' alt='" . $alt . "' /></a>";
+						$thumbs .= " <a href='" . $link[0] . "' data-rel='gallery-" . self::$gallery . "' data-prev-img='" . $prev[0] . "' {$class} data-onclick='{$counter}' $markup_url><img {$tooltip} src='" . $img[0] . "' width='" . $img[1] . "' height='" . $img[2] . "' alt='" . $alt . "' /></a>";
 						$first = false;
 					}
 
