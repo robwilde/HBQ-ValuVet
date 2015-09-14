@@ -15,29 +15,9 @@
 				$this->config['icon']      = AviaBuilder::$path['imagesURL'] . "sc-image.png";
 				$this->config['order']     = 100;
 				$this->config['target']    = 'avia-target-insert';
-				$this->config['shortcode'] = 'av_image';
+				$this->config['shortcode'] = 'vv_image';
 				//$this->config['modal_data']     = array('modal_class' => 'mediumscreen');
 				$this->config['tooltip'] = __( 'Inserts Valuvet image', 'avia_framework' );
-			}
-
-			function getPrimaryImage() {
-
-				$primary_image = [ ];
-
-				$image = get_field( 'primary_image' );
-				// vars
-				$primary_image['url']     = $image['url'];
-				$primary_image['title']   = $image['title'];
-				$primary_image['alt']     = $image['alt'];
-				$primary_image['caption'] = $image['caption'];
-
-				// thumbnail
-				$size                    = 'thumbnail';
-				$primary_image['thumb']  = $image['sizes'][ $size ];
-				$primary_image['width']  = $image['sizes'][ $size . '-width' ];
-				$primary_image['height'] = $image['sizes'][ $size . '-height' ];
-
-				return $primary_image;
 			}
 
 			/**
@@ -49,6 +29,7 @@
 			 * @return void
 			 */
 			function popup_elements() {
+
 				$this->elements = array(
 
 					array(
@@ -60,15 +41,15 @@
 						"name"          => __( "Image Settings", 'avia_framework' ),
 						'nodescription' => true
 					),
-					array(
-						"name"   => __( "Choose Image", 'avia_framework' ),
-						"desc"   => __( "Either upload a new, or choose an existing image from your media library", 'avia_framework' ),
-						"id"     => "src",
-						"type"   => "image",
-						"title"  => __( "Insert Image", 'avia_framework' ),
-						"button" => __( "Insert", 'avia_framework' ),
-						"std"    => AviaBuilder::$path['imagesURL'] . "placeholder.jpg"
-					),
+//					array(
+//						"name"   => __( "Choose Image", 'avia_framework' ),
+//						"desc"   => __( "Either upload a new, or choose an existing image from your media library", 'avia_framework' ),
+//						"id"     => "src",
+//						"type"   => "image",
+//						"title"  => __( "Insert Image", 'avia_framework' ),
+//						"button" => __( "Insert", 'avia_framework' ),
+//						"std"    => AviaBuilder::$path['imagesURL'] . "placeholder.jpg"
+//					),
 					array(
 						"name"    => __( "Image Alignment", 'avia_framework' ),
 						"desc"    => __( "Choose here, how to align your image", 'avia_framework' ),
@@ -253,7 +234,6 @@
 
 				);
 
-
 			}
 
 			/**
@@ -279,7 +259,8 @@
 				}
 
 
-				$params['innerHtml'] = "<div class='avia_image avia_image_style avia_hidden_bg_box'>";
+				$params['innerHtml'] = "<h3>ValuVet Primary Image</h3>";
+				$params['innerHtml'] .= "<div class='avia_image avia_image_style avia_hidden_bg_box'>";
 				$params['innerHtml'] .= "<div " . $this->class_by_arguments( 'align', $params['args'] ) . ">";
 				$params['innerHtml'] .= "<div class='avia_image_container' {$template}>{$img}</div>";
 				$params['innerHtml'] .= "</div>";
@@ -287,6 +268,32 @@
 				$params['class'] = "";
 
 				return $params;
+			}
+
+			/**
+			 * Grab thr primary image from the ACF primary_image field
+			 * @return array
+			 */
+			function getPrimaryImage( $postID ) {
+
+				$primary_image = [ ];
+
+				$image = get_field( 'primary_image', $postID );
+				// vars
+
+				$primary_image['id']      = $image['id'];
+				$primary_image['url']     = $image['url'];
+				$primary_image['title']   = $image['title'];
+				$primary_image['alt']     = $image['alt'];
+				$primary_image['caption'] = $image['caption'];
+
+				// thumbnail
+				$size                    = 'thumbnail';
+				$primary_image['thumb']  = $image['sizes'][ $size ];
+				$primary_image['width']  = $image['sizes'][ $size . '-width' ];
+				$primary_image['height'] = $image['sizes'][ $size . '-height' ];
+
+				return $primary_image;
 			}
 
 			/**
@@ -303,6 +310,7 @@
 				$class  = "";
 				$alt    = "";
 				$title  = "";
+
 
 				/**
 				 * setting the variables for the extract function
@@ -345,20 +353,15 @@
 
 				extract( $atts );
 
+				$primary_image = $this->getPrimaryImage( get_the_ID() );
 
-				if ( ! empty( $attachment ) ) {
-					$attachment_entry = get_post( $attachment );
+				if ( ! empty( $primary_image ) ) {
 
-					if ( ! empty( $attachment_entry ) ) {
-						$alt   = get_post_meta( $attachment_entry->ID, '_wp_attachment_image_alt', true );
-						$alt   = ! empty( $alt ) ? esc_attr( $alt ) : '';
-						$title = trim( $attachment_entry->post_title ) ? esc_attr( $attachment_entry->post_title ) : "";
+					$alt   = ! empty( $primary_image['alt'] ) ? esc_attr( $primary_image['alt'] ) : '';
+					$title = trim( $primary_image['title'] ) ? esc_attr( $primary_image['title'] ) : "";
 
-						if ( ! empty( $attachment_size ) ) {
-							$src = wp_get_attachment_image_src( $attachment_entry->ID, $attachment_size );
-							$src = ! empty( $src[0] ) ? $src[0] : "";
-						}
-					}
+					$src = $primary_image['url'];
+
 				} else {
 					$attachment = false;
 				}
