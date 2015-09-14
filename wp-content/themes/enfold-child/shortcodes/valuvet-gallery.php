@@ -35,15 +35,6 @@
 			function popup_elements() {
 				$this->elements = array(
 
-//					array(
-//						"name"   => __( "Edit Gallery", 'avia_framework' ),
-//						"desc"   => __( "Create a new Gallery by selecting existing or uploading new images", 'avia_framework' ),
-//						"id"     => "ids",
-//						"type"   => "gallery",
-//						"title"  => __( "Add/Edit Gallery", 'avia_framework' ),
-//						"button" => __( "Insert Images", 'avia_framework' ),
-//						"std"    => ""
-//					),
 					array(
 						"name"    => __( "Gallery Style", 'avia_framework' ),
 						"desc"    => __( "Choose the layout of your Gallery", 'avia_framework' ),
@@ -189,28 +180,6 @@
 				), $atts, $this->config['shortcode'] ) );
 
 				$attachments = get_field( 'image_gallery_2' );
-
-//				$attachments = get_posts( array(
-//						'include'        => $ids,
-//						'post_status'    => 'inherit',
-//						'post_type'      => 'attachment',
-//						'post_mime_type' => 'image',
-//						'order'          => $order,
-//						'orderby'        => 'post__in'
-//					)
-//				);
-
-				/* @TODO -------------------------------------------------------- LOGGING --------------------------------------------------- */
-//				if ( function_exists( '_log' ) ) {
-//					_log( array(
-//						'FILE_NAME'   => basename( __FILE__ ),
-//						'LINE'        => ( __LINE__ ),
-//						'ATTACHMENTS' => $attachments,
-//						'ACF_IMAGE'   => $acf_gallery
-//					) );
-//				}
-				/*--------------------------------------------------------- LOGGING ------------------------------------------------------------*/
-
 
 				//compatibility mode for default wp galleries
 				if ( ! empty( $size ) ) {
