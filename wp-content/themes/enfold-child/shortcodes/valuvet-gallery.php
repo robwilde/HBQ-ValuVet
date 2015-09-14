@@ -208,7 +208,7 @@
 						$prev              = wp_get_attachment_image_src( $attachment['ID'], $preview_size );
 
 //						$caption = trim( $attachment->post_excerpt ) ? wptexturize( $attachment->post_excerpt ) : "";
-						$caption = "";
+                        $caption = trim( $attachment['caption'] ) ? wptexturize( $attachment['caption'] ) : "";
 						$tooltip = $caption ? "data-avia-tooltip='" . $caption . "'" : "";
 
 						$alt         = get_post_meta( $attachment['ID'], '_wp_attachment_image_alt', true );
