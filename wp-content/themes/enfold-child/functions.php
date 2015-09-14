@@ -24,11 +24,19 @@
 	/*-------------------------------------------------------------------------------
 		Enqueue Script
 	-------------------------------------------------------------------------------*/
+
+	// admin
 	add_action( 'admin_enqueue_scripts', function () {
 
 		wp_enqueue_style( 'valuvet-admin-css', CHILD_PATH_URI . '/css/valuvet-admin-styles.css', '1.0.0' );
-		wp_enqueue_script( 'valuvet-admin', CHILD_PATH_URI . '/js/admin.js', array( 'jquery' ), '1.0.0', true );
+		wp_enqueue_script( 'valuvet-admin', CHILD_PATH_URI . '/js/valuvet-admin.js', array( 'jquery' ), '1.0.0', true );
 		wp_enqueue_script( 'word-counter', CHILD_PATH_URI . '/js/jquery.word-and-character-counter.min.js', array( 'jquery' ), '2.4.0', true );
+	} );
+
+	// public
+	add_action( 'wp_enqueue_scripts', function () {
+
+		wp_enqueue_script( 'valuvet-display', CHILD_PATH_URI . '/js/valuvet-public.js', array( 'jquery' ), '1.0.0', true );
 	} );
 
 	/*-------------------------------------------------------------------------------

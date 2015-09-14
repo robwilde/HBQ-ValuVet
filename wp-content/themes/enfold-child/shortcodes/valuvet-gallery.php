@@ -203,21 +203,24 @@
 					foreach ( $attachments as $attachment ) {
 						$link              = apply_filters( 'avf_avia_builder_gallery_image_link', wp_get_attachment_image_src( $attachment['ID'], $lightbox_size ), $attachment, $atts, $meta );
 						$custom_link_class = ! empty( $link['custom_link_class'] ) ? $link['custom_link_class'] : '';
-						$class             = $counter ++ % $columns ? "class='$imagelink $custom_link_class'" : "class='first_thumb $imagelink $custom_link_class'";
-						$img               = wp_get_attachment_image_src( $attachment['ID'], $thumb_size );
-						$prev              = wp_get_attachment_image_src( $attachment['ID'], $preview_size );
+						$class             = $counter ++ % $columns
+							? "class='$imagelink $custom_link_class suppress-tooltip'"
+							: "class='first_thumb $imagelink $custom_link_class suppress-tooltip'";
+
+						$img  = wp_get_attachment_image_src( $attachment['ID'], $thumb_size );
+						$prev = wp_get_attachment_image_src( $attachment['ID'], $preview_size );
 
 //						$caption = trim( $attachment->post_excerpt ) ? wptexturize( $attachment->post_excerpt ) : "";
-                        $caption = trim( $attachment['caption'] ) ? wptexturize( $attachment['caption'] ) : "";
+						$caption = trim( $attachment['caption'] ) ? wptexturize( $attachment['caption'] ) : "";
 						$tooltip = $caption ? "data-avia-tooltip='" . $caption . "'" : "";
 
-						$alt         = get_post_meta( $attachment['ID'], '_wp_attachment_image_alt', true );
-						$alt         = ! empty( $alt ) ? esc_attr( $alt ) : '';
+						$alt = get_post_meta( $attachment['ID'], '_wp_attachment_image_alt', true );
+						$alt = ! empty( $alt ) ? esc_attr( $alt ) : '';
 //						$title       = trim( $attachment->post_title ) ? esc_attr( $attachment->post_title ) : "";
 //						$description = trim( $attachment->post_content ) ? esc_attr( $attachment->post_content ) : esc_attr( trim( $attachment->post_excerpt ) );
 
 						$title       = trim( $attachment['title'] ) ? esc_attr( $attachment['title'] ) : "";
-						$description = trim( $attachment['description'] ) ? esc_attr( $attachment['description'] ) : esc_attr( trim( $attachment['name'] ) );
+						$description = trim( $attachment['description'] ) ? esc_attr( $attachment['description'] ) : esc_attr( trim( $attachment['caption'] ) );
 
 						$markup_url = avia_markup_helper( array(
 							'context'       => 'image_url',
@@ -227,15 +230,15 @@
 						) );
 
 						if ( $style == "big_thumb" && $first ) {
-							$output .= "<a class='avia-gallery-big fakeLightbox $imagelink $crop_big_preview_thumbnail $custom_link_class' href='" . $link[0] . "'  data-onclick='1'><span class='avia-gallery-big-inner' $markup_url>";
-							$output .= "	<img width='" . $prev[1] . "' height='" . $prev[2] . "' src='" . $prev[0] . "' alt='" . $alt . "' />";
+							$output .= "<a class='avia-gallery-big fakeLightbox $imagelink $crop_big_preview_thumbnail $custom_link_class' href='" . $link[0] . "'  data-onclick='1' title='" . $description . "' ><span class='avia-gallery-big-inner' $markup_url>";
+							$output .= "	<img width='" . $prev[1] . "' height='" . $prev[2] . "' src='" . $prev[0] . "' title='" . $title . "' alt='" . $alt . "' />";
 							if ( $caption ) {
 								$output .= "	<span class='avia-gallery-caption'>{$caption}</span>";
 							}
 							$output .= "</span></a>";
 						}
 
-						$thumbs .= " <a href='" . $link[0] . "' data-rel='gallery-" . self::$gallery . "' data-prev-img='" . $prev[0] . "' {$class} data-onclick='{$counter}' $markup_url><img {$tooltip} src='" . $img[0] . "' width='" . $img[1] . "' height='" . $img[2] . "' alt='" . $alt . "' /></a>";
+						$thumbs .= " <a href='" . $link[0] . "' data-rel='gallery-" . self::$gallery . "' data-prev-img='" . $prev[0] . "' {$class} data-onclick='{$counter}' title='" . $description . "' $markup_url><img {$tooltip} src='" . $img[0] . "' width='" . $img[1] . "' height='" . $img[2] . "'  title='" . $title . "' alt='" . $alt . "' /></a>";
 						$first = false;
 					}
 
