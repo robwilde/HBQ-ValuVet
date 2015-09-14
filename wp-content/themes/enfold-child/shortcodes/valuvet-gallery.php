@@ -35,15 +35,15 @@
 			function popup_elements() {
 				$this->elements = array(
 
-					array(
-						"name"   => __( "Edit Gallery", 'avia_framework' ),
-						"desc"   => __( "Create a new Gallery by selecting existing or uploading new images", 'avia_framework' ),
-						"id"     => "ids",
-						"type"   => "gallery",
-						"title"  => __( "Add/Edit Gallery", 'avia_framework' ),
-						"button" => __( "Insert Images", 'avia_framework' ),
-						"std"    => ""
-					),
+//					array(
+//						"name"   => __( "Edit Gallery", 'avia_framework' ),
+//						"desc"   => __( "Create a new Gallery by selecting existing or uploading new images", 'avia_framework' ),
+//						"id"     => "ids",
+//						"type"   => "gallery",
+//						"title"  => __( "Add/Edit Gallery", 'avia_framework' ),
+//						"button" => __( "Insert Images", 'avia_framework' ),
+//						"std"    => ""
+//					),
 					array(
 						"name"    => __( "Gallery Style", 'avia_framework' ),
 						"desc"    => __( "Choose the layout of your Gallery", 'avia_framework' ),
@@ -158,6 +158,21 @@
 					}
 				}
 
+				/**
+				 * @var $order
+				 * @var $thumb_size
+				 * @var $size
+				 * @var $lightbox_size
+				 * @var $preview_size
+				 * @var $ids
+				 * @var $ajax_request
+				 * @var $imagelink
+				 * @var $style
+				 * @var $columns
+				 * @var $lazyload
+				 * @var $crop_big_preview_thumbnail
+				 */
+
 				extract( shortcode_atts( array(
 					'order'                      => 'ASC',
 					'thumb_size'                 => 'thumbnail',
@@ -173,16 +188,28 @@
 					'crop_big_preview_thumbnail' => 'avia-gallery-big-crop-thumb'
 				), $atts, $this->config['shortcode'] ) );
 
+				$attachments = get_field( 'image_gallery_2' );
 
-				$attachments = get_posts( array(
-						'include'        => $ids,
-						'post_status'    => 'inherit',
-						'post_type'      => 'attachment',
-						'post_mime_type' => 'image',
-						'order'          => $order,
-						'orderby'        => 'post__in'
-					)
-				);
+//				$attachments = get_posts( array(
+//						'include'        => $ids,
+//						'post_status'    => 'inherit',
+//						'post_type'      => 'attachment',
+//						'post_mime_type' => 'image',
+//						'order'          => $order,
+//						'orderby'        => 'post__in'
+//					)
+//				);
+
+				/* @TODO -------------------------------------------------------- LOGGING --------------------------------------------------- */
+//				if ( function_exists( '_log' ) ) {
+//					_log( array(
+//						'FILE_NAME'   => basename( __FILE__ ),
+//						'LINE'        => ( __LINE__ ),
+//						'ATTACHMENTS' => $attachments,
+//						'ACF_IMAGE'   => $acf_gallery
+//					) );
+//				}
+				/*--------------------------------------------------------- LOGGING ------------------------------------------------------------*/
 
 
 				//compatibility mode for default wp galleries
@@ -205,24 +232,28 @@
 					$counter = 0;
 
 					foreach ( $attachments as $attachment ) {
-						$link              = apply_filters( 'avf_avia_builder_gallery_image_link', wp_get_attachment_image_src( $attachment->ID, $lightbox_size ), $attachment, $atts, $meta );
+						$link              = apply_filters( 'avf_avia_builder_gallery_image_link', wp_get_attachment_image_src( $attachment['ID'], $lightbox_size ), $attachment, $atts, $meta );
 						$custom_link_class = ! empty( $link['custom_link_class'] ) ? $link['custom_link_class'] : '';
 						$class             = $counter ++ % $columns ? "class='$imagelink $custom_link_class'" : "class='first_thumb $imagelink $custom_link_class'";
-						$img               = wp_get_attachment_image_src( $attachment->ID, $thumb_size );
-						$prev              = wp_get_attachment_image_src( $attachment->ID, $preview_size );
+						$img               = wp_get_attachment_image_src( $attachment['ID'], $thumb_size );
+						$prev              = wp_get_attachment_image_src( $attachment['ID'], $preview_size );
 
-						$caption = trim( $attachment->post_excerpt ) ? wptexturize( $attachment->post_excerpt ) : "";
+//						$caption = trim( $attachment->post_excerpt ) ? wptexturize( $attachment->post_excerpt ) : "";
+						$caption = "";
 						$tooltip = $caption ? "data-avia-tooltip='" . $caption . "'" : "";
 
-						$alt         = get_post_meta( $attachment->ID, '_wp_attachment_image_alt', true );
+						$alt         = get_post_meta( $attachment['ID'], '_wp_attachment_image_alt', true );
 						$alt         = ! empty( $alt ) ? esc_attr( $alt ) : '';
-						$title       = trim( $attachment->post_title ) ? esc_attr( $attachment->post_title ) : "";
-						$description = trim( $attachment->post_content ) ? esc_attr( $attachment->post_content ) : esc_attr( trim( $attachment->post_excerpt ) );
+//						$title       = trim( $attachment->post_title ) ? esc_attr( $attachment->post_title ) : "";
+//						$description = trim( $attachment->post_content ) ? esc_attr( $attachment->post_content ) : esc_attr( trim( $attachment->post_excerpt ) );
+
+						$title       = trim( $attachment['title'] ) ? esc_attr( $attachment['title'] ) : "";
+						$description = trim( $attachment['description'] ) ? esc_attr( $attachment['description'] ) : esc_attr( trim( $attachment['name'] ) );
 
 						$markup_url = avia_markup_helper( array(
 							'context'       => 'image_url',
 							'echo'          => false,
-							'id'            => $attachment->ID,
+							'id'            => $attachment['ID'],
 							'custom_markup' => $meta['custom_markup']
 						) );
 
