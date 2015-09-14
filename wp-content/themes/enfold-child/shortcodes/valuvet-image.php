@@ -424,9 +424,9 @@
 						$output .= "<div class='avia-image-container {$class} " . $meta['el_class'] . " " . $this->class_by_arguments( 'align', $atts, true ) . "' $markup >";
 						$output .= "<div class='avia-image-container-inner'>";
 						if ( $link ) {
-							$output .= "<a href='{$link}' class='avia_image'  {$blank}>{$overlay}<img class='avia_image ' src='{$src}' alt='{$alt}' title='{$title}' $markup_url /></a>";
+							$output .= "<a href='{$link}' class='avia_image suppress-tooltip'  {$blank}>{$overlay}<img class='avia_image ' src='{$src}' alt='{$alt}' title='{$title}' $markup_url /></a>";
 						} else {
-							$output .= "{$overlay}<img class='avia_image ' src='{$src}' alt='{$alt}' title='{$title}'  $markup_url />";
+							$output .= "{$overlay}<img class='avia_image suppress-tooltip' src='{$src}' alt='{$alt}' title='{$title}'  $markup_url />";
 						}
 						$output .= "</div>";
 						$output .= "</div>";

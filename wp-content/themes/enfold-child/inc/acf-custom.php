@@ -10,7 +10,7 @@
 	-------------------------------------------------------------------------------*/
 	add_filter( 'manage_edit-property_columns', function ( $columns ) {
 
-		$columns = array (
+		$columns = array(
 			'cb'            => '<input type="checkbox" />',
 			'title'         => __( 'Movie' ),
 			'practice_name' => __( 'Practice Name' ),
@@ -93,20 +93,20 @@
 				$package = 'ERROR';
 		}
 		$property_id = $address_state . '-' . $post_id . '-' . $package;
-		$post_array  = array (
+		$post_array  = array(
 			'ID'         => $post_id,
 			'post_title' => $property_id
 		);
-		$post_title = get_the_title( $post_id );
+		$post_title  = get_the_title( $post_id );
 		//	update the post title
 		if ( $property_id !== $post_title ) {
 			// did the update work OK
-			wp_update_post( $post_array, TRUE );
+			wp_update_post( $post_array, true );
 			if ( is_wp_error( $post_id ) ) {
 				// capture the errors and write to the WP Log
 				$errors = $post_id->get_error_messages();
 				if ( function_exists( '_log' ) ) {
-					_log( array (
+					_log( array(
 						'FILE_NAME'      => basename( __FILE__ ),
 						'LINE'           => ( __LINE__ ),
 						'WP_UPDATE_POST' => $errors
@@ -121,7 +121,7 @@
 	add_action( 'acf/input/admin_footer', function () {
 		?>
 
-		<script type = "text/javascript">
+		<script type="text/javascript">
 			(function ($) {
 
 				$.fn.money = function (number, format) {
@@ -241,19 +241,14 @@
 					// ------------------------------------------------------------
 
 					// fields for the headline
-					var acfFields = {
-						practiceFor: null,
-						practiceType: null,
-						buildingType: null,
-						addressCity: null,
-						addressState: null
-					};
+					var acfFields = {};
 
 					// retrieve PRACTICE IS FOR selected
 					var $acfPracticeFor = $('#acf-field_55dc2db2e9268');
 					$acfPracticeFor.on('change', function () {
 						acfFields.practiceFor = $(this).val();
-						headingField(acfFields);
+//						headingField(acfFields);
+						setHeading();
 					});
 
 
@@ -264,11 +259,12 @@
 						if (acfFields.practiceType == 'Other') {
 							$('#acf-field_55dc2db2e8826').on('change', function () {
 								acfFields.practiceType = $(this).val();
-								headingField(acfFields);
-
+//								headingField(acfFields);
+								setHeading();
 							});
 						} else {
-							headingField(acfFields);
+//							headingField(acfFields);
+							setHeading();
 						}
 					});
 
@@ -277,7 +273,8 @@
 					var $acfBuildType = $('#acf-field_55dc564e9f897');
 					$acfBuildType.on('change', function () {
 						acfFields.buildingType = $(this).val();
-						headingField(acfFields);
+//						headingField(acfFields);
+						setHeading();
 					});
 
 
@@ -285,30 +282,58 @@
 					var $acfAddressCity = $('#acf-field_55dc2db2e8b0e');
 					$acfAddressCity.on('change', function () {
 						acfFields.addressCity = $(this).val();
-						headingField(acfFields);
+//						headingField(acfFields);
+						setHeading();
 					});
 
 					// retrieve ADDRESS CITY selected
 					var $acfAddressState = $('#acf-field_55dc2db2e8bfa');
 					$acfAddressState.on('change', function () {
 						acfFields.addressState = $(this).val();
-						headingField(acfFields);
+//						headingField(acfFields);
+						setHeading();
 					});
 
 					// creating the heading and/or custom heading prepend/append
 					var $headline = $('#level_one_headline').find('.acf-input');
 					var $customHeadline = $('.acf-field-55dc2db2eacf2').find('.acf-input');
 
-					function headingField(inputs) {
-						$headline.html(acfFields.practiceFor + ' - '
-							+ acfFields.practiceType + ' '
-							+ acfFields.buildingType + ' - '
-							+ acfFields.addressCity + ','
-							+ acfFields.addressState);
+//					function headingField(acfFields) {
+//
+//						$headline.html(acfFields.practiceFor + ' - '
+//							+ acfFields.practiceType + ' '
+//							+ acfFields.buildingType + ' - '
+//							+ acfFields.addressCity + ','
+//							+ acfFields.addressState);
+//
+//						$customHeadline.find('.acf-input-prepend').html(acfFields.practiceFor);
+//						$customHeadline.find('.acf-input-append').html(acfFields.addressCity + ',' + acfFields.addressState);
+//					}
 
-						$customHeadline.find('.acf-input-prepend').html(acfFields.practiceFor);
-						$customHeadline.find('.acf-input-append').html(acfFields.addressCity + ',' + acfFields.addressState);
-					};
+					function setHeading() {
+
+						var practiceFor = $acfPracticeFor.val();
+
+						var practiceType = $acfPracticeType.val();
+						if (practiceType == 'Other') {
+							practiceType = $('#acf-field_55dc2db2e8826').val();
+						}
+
+						var buildingType = $acfBuildType.val();
+						var addressCity = $acfAddressCity.val();
+						var addressState = $acfAddressState.val();
+
+						$headline.html(practiceFor + ' - ' + practiceType + ' ' + buildingType + ' - ' + addressCity + ',' + addressState);
+
+						$customHeadline.find('.acf-input-prepend').html(practiceFor);
+						$customHeadline.find('.acf-input-append').html(addressCity + ',' + addressState);
+
+					}
+
+					if ($headline.html().trim() == "" || $customHeadline.find('.acf-input-prepend').html() == "" && $customHeadline.find('.acf-input-append').html() == "") {
+						setHeading();
+					}
+
 
 					// ------------------------------------------------------------
 					// Add word count to text areas

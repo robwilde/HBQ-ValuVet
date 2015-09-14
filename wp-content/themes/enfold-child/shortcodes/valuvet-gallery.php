@@ -174,7 +174,7 @@
 					'ajax_request'               => false,
 					'imagelink'                  => 'lightbox',
 					'style'                      => 'thumbnails',
-					'columns'                    => 5,
+					'columns'                    => 8,
 					'lazyload'                   => 'avia_lazyload',
 					'crop_big_preview_thumbnail' => 'avia-gallery-big-crop-thumb'
 				), $atts, $this->config['shortcode'] ) );

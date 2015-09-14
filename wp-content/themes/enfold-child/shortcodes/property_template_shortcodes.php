@@ -8,6 +8,7 @@
 
 		public static function register_shortcodes() {
 			/* Add list of Shortcode here  - function is below */
+			add_shortcode( 'property_title', array( __CLASS__, 'property_title' ) );
 			add_shortcode( 'property_address', array( __CLASS__, 'property_address' ) );
 			add_shortcode( 'property_overview_desc', array( __CLASS__, 'property_overview_desc' ) );
 			add_shortcode( 'property_price', array( __CLASS__, 'property_price' ) );
@@ -22,6 +23,29 @@
 			add_shortcode( 'property_desc_location', array( __CLASS__, 'property_desc_location' ) );
 		}
 		/* add shortcode Function here */
+
+		/*-------------------------------------------------------------------------------
+				PROPERTY TITLE
+		-------------------------------------------------------------------------------*/
+
+		/**/
+		public static function property_title() {
+
+			$headline_select  = get_field( 'headline_select' );
+			$standard_section = get_field( 'practice_type' ) . ' ' . get_field( 'building_type' );
+
+			$custom_section = ( $headline_select != 'Standard Headline' )
+				? get_field( 'custom_headline' )
+				: $standard_section;
+
+			$location = get_field( 'address_city' ) . ',' . get_field( 'address_state' );
+			$headline = get_field( 'practice_is_for' ) . ' - ' . $custom_section . ' - ' . $location;
+
+			$out = '<h3>'.$headline.'</h3>';
+
+			return $out;
+		}
+		/**/
 
 		/*-------------------------------------------------------------------------------
 			PROPERTY ADDRESS
@@ -50,8 +74,8 @@
 			$out = '<h6>Overview Description:</h6>';
 			$out .= '<p>';
 
-			$upgrade_option_one  = get_field( 'upgrade_option_one' );
-			$upgrade_option_two  = get_field( 'upgrade_option_two' );
+			$upgrade_option_one = get_field( 'upgrade_option_one' );
+			$upgrade_option_two = get_field( 'upgrade_option_two' );
 
 			$out .= get_field( 'short_description_1' );
 			$out .= get_field( 'short_description_2' );
