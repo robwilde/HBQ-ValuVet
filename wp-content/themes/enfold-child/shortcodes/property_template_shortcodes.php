@@ -31,17 +31,32 @@
 		/**/
 		public static function property_title() {
 
-			$headline_select  = get_field( 'headline_select' );
-			$standard_section = get_field( 'practice_type' ) . ' ' . get_field( 'building_type' );
+			$post_id = get_the_ID();
 
-			$custom_section = ( $headline_select != 'Standard Headline' )
+			$headline_select  = get_field( 'headline_select' );
+			$add_package      = get_field( 'advertisement_package' );
+			$standard_section = get_field( 'practice_type' ) . ' ' . get_field( 'building_type' );
+			/* @TODO -------------------------------------------------------- LOGGING --------------------------------------------------- */
+			if ( function_exists( '_log' ) ) {
+				_log( array(
+					'FILE_NAME'       => basename( __FILE__ ),
+					'LINE'            => ( __LINE__ ),
+					'HEADLINE_SELECT' => $headline_select,
+					'STANDARD'        => $standard_section,
+					'ADD_PACKAGE'     => $add_package,
+					'POST_ID'         => get_the_ID()
+				) );
+			}
+			/*--------------------------------------------------------- LOGGING ------------------------------------------------------------*/
+
+			$custom_section = ( $headline_select == 'Custom Headline' )
 				? get_field( 'custom_headline' )
 				: $standard_section;
 
 			$location = get_field( 'address_city' ) . ',' . get_field( 'address_state' );
 			$headline = get_field( 'practice_is_for' ) . ' - ' . $custom_section . ' - ' . $location;
 
-			$out = '<h3>'.$headline.'</h3>';
+			$out = '<h3>' . $headline . '</h3>';
 
 			return $out;
 		}
@@ -95,10 +110,15 @@
 
 			$show_asking_price = get_field( 'show_asking_price' );
 			$total_value       = get_field( 'total_value' );
+			$practice_is_for   = get_field( 'practice_is_for' );
 
 			$out = ( $show_asking_price == 'yes' )
 				? '<h3 class="asking_price"> $' . $total_value . '</h3>'
 				: '<h3 class="asking_price">P.O.A.</h3>';
+
+			$out = ( $practice_is_for == 'For Lease' )
+				? '<h3 class="asking_price">FOR LEASE</h3>'
+				: $out;
 
 			return $out;
 		}
