@@ -387,7 +387,7 @@
 					$acfStock.on('change', function () {
 						var $thisValue = $(this).val();
 						$acfStock.money($thisValue, {commas: true});
-						setTotalValue()
+						setTotalValue();
 
 					});
 					// equipment_dollar_value
@@ -395,20 +395,20 @@
 					$acfEquipment.on('change', function () {
 						var $thisValue = $(this).val();
 						$acfEquipment.money($thisValue, {commas: true});
-						setTotalValue()
+						setTotalValue();
 					});
 					// goodwill_dollar_value
 					var $acfGoodwill = $('#acf-field_55dc2db2e963f');
 					$acfGoodwill.on('change', function () {
 						var $thisValue = $(this).val();
-						setTotalValue()
+						setTotalValue();
 						$acfGoodwill.money($thisValue, {commas: true});
 					});
 					// property_realestate_value
 					var $acfProperty = $('#acf-field_55dc2db2e994c');
 					$acfProperty.on('change', function () {
 						var $thisValue = $(this).val();
-						setTotalValue()
+						setTotalValue();
 						$acfProperty.money($thisValue, {commas: true});
 					});
 
@@ -430,7 +430,10 @@
 							+ parseInt(getNumber($acfGoodwill.val()))
 							+ parseInt(getNumber($acfProperty.val()));
 						// set total as currency and update
-						$acfTotal.money(totalValue, {commas: true})
+						$acfTotal.money(totalValue, {commas: true});
+
+						// set Total Property Value Read Only
+						$acfTotal.attr('readonly', true);
 					}
 
 				});

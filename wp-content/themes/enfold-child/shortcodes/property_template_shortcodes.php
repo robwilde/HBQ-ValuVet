@@ -6,6 +6,29 @@
 	 */
 	class VALUVET_SHORTCODES {
 
+		public static $add_package;
+
+		public static function getAddPackage() {
+			$_add_package = get_field( 'advertisement_package' );
+			$package = '';
+
+			switch ( $_add_package ) {
+				case '165':
+					$package = 'p1';
+					break;
+				case '330':
+					$package = 'p2';
+					break;
+				case '550':
+					$package = 'p3';
+					break;
+
+			}
+
+			return $package;
+		}
+
+
 		public static function register_shortcodes() {
 			/* Add list of Shortcode here  - function is below */
 			add_shortcode( 'property_title', array( __CLASS__, 'property_title' ) );
@@ -21,6 +44,9 @@
 			add_shortcode( 'property_desc_business', array( __CLASS__, 'property_desc_business' ) );
 			add_shortcode( 'property_desc_opportunity', array( __CLASS__, 'property_desc_opportunity' ) );
 			add_shortcode( 'property_desc_location', array( __CLASS__, 'property_desc_location' ) );
+
+			self::$add_package = self::getAddPackage();
+
 		}
 		/* add shortcode Function here */
 
@@ -31,10 +57,8 @@
 		/**/
 		public static function property_title() {
 
-			$post_id = get_the_ID();
+			$headline_select = get_field( 'headline_select' );
 
-			$headline_select  = get_field( 'headline_select' );
-			$add_package      = get_field( 'advertisement_package' );
 			$standard_section = get_field( 'practice_type' ) . ' ' . get_field( 'building_type' );
 			/* @TODO -------------------------------------------------------- LOGGING --------------------------------------------------- */
 			if ( function_exists( '_log' ) ) {
@@ -43,7 +67,7 @@
 					'LINE'            => ( __LINE__ ),
 					'HEADLINE_SELECT' => $headline_select,
 					'STANDARD'        => $standard_section,
-					'ADD_PACKAGE'     => $add_package,
+					'ADD_PACKAGE'     => self::$add_package,
 					'POST_ID'         => get_the_ID()
 				) );
 			}
@@ -86,14 +110,15 @@
 		/**/
 		public static function property_overview_desc() {
 
+			$short_description_1 = get_field( 'short_description_1' );
+			$short_description_2 = get_field( 'short_description_2' );
+
 			$out = '<h6>Overview Description:</h6>';
 			$out .= '<p>';
 
-			$upgrade_option_one = get_field( 'upgrade_option_one' );
-			$upgrade_option_two = get_field( 'upgrade_option_two' );
-
-			$out .= get_field( 'short_description_1' );
-			$out .= get_field( 'short_description_2' );
+			$out .= ( get_field( 'advertisement_package' ) == '165' )
+				? $short_description_1
+				: $short_description_2;
 
 			$out .= '</p>';
 

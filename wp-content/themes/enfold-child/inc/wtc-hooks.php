@@ -14,6 +14,7 @@
 		// Custom Post Types
 		$cpt_array = array(
 			'property',
+			'page'
 		);
 
 		foreach ( $metabox as &$meta ) {
