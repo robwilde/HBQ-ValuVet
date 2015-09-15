@@ -356,7 +356,9 @@
                 "Vacant Premises": "Vacant Premises",
                 "Other": "Other"
             },
-            "default_value": [],
+            "default_value": {
+                "Small Animal": "Small Animal"
+            },
             "allow_null": 0,
             "multiple": 0,
             "ui": 1,
@@ -383,7 +385,9 @@
                 "Clinic": "Clinic (Small Building)",
                 "Surgery": "Surgery (Room)"
             },
-            "default_value": [],
+            "default_value": {
+                "Hospital": "Hospital (Large Building)"
+            },
             "allow_null": 0,
             "multiple": 0,
             "ui": 1,
@@ -655,7 +659,9 @@
                 "For Lease": "For Lease",
                 "For Sale\/Lease": "For Sale\/Lease"
             },
-            "default_value": [],
+            "default_value": {
+                "For Sale": "For Sale"
+            },
             "allow_null": 0,
             "multiple": 0,
             "ui": 1,
@@ -688,7 +694,7 @@
                 ]
             ],
             "wrapper": {
-                "width": 40,
+                "width": 100,
                 "class": "",
                 "id": ""
             },
@@ -724,7 +730,7 @@
                 ]
             ],
             "wrapper": {
-                "width": 20,
+                "width": 33,
                 "class": "",
                 "id": "stock_value"
             },
@@ -760,7 +766,7 @@
                 ]
             ],
             "wrapper": {
-                "width": 20,
+                "width": 33,
                 "class": "",
                 "id": ""
             },
@@ -796,7 +802,7 @@
                 ]
             ],
             "wrapper": {
-                "width": 20,
+                "width": 33,
                 "class": "",
                 "id": ""
             },
@@ -822,11 +828,11 @@
                 "id": ""
             },
             "choices": {
-                "for_sale": "For Sale",
-                "for_lease": "For Lease"
+                "For Sale": "For Sale",
+                "For Lease": "For Lease"
             },
             "default_value": {
-                "": ""
+                "For Sale": "For Sale"
             },
             "allow_null": 0,
             "multiple": 0,
@@ -848,7 +854,7 @@
                     {
                         "field": "field_55dc2db2e9742",
                         "operator": "==",
-                        "value": "for_lease"
+                        "value": "For Lease"
                     }
                 ]
             ],
@@ -877,7 +883,7 @@
                     {
                         "field": "field_55dc2db2e9742",
                         "operator": "==",
-                        "value": "for_sale"
+                        "value": "For Sale"
                     }
                 ]
             ],
@@ -949,7 +955,7 @@
                 "poa": "POA"
             },
             "default_value": {
-                "": ""
+                "yes": "yes"
             },
             "allow_null": 0,
             "multiple": 0,
@@ -1160,7 +1166,7 @@
                     {
                         "field": "field_55dc2db2e7a4f",
                         "operator": "==",
-                        "value": "330"
+                        "value": "165"
                     },
                     {
                         "field": "field_55dc61325be8b",
@@ -1189,7 +1195,7 @@
                     {
                         "field": "field_55dc2db2e7a4f",
                         "operator": "==",
-                        "value": "550"
+                        "value": "165"
                     },
                     {
                         "field": "field_55dc61325be8b",
@@ -1218,7 +1224,7 @@
                     {
                         "field": "field_55dc2db2e7a4f",
                         "operator": "==",
-                        "value": "550"
+                        "value": "330"
                     },
                     {
                         "field": "field_55dd2bd18e20a",
@@ -1425,7 +1431,7 @@
                 "class": "",
                 "id": "level_one_headline"
             },
-            "message": "Practice For - Practice Type  Building Type - City,State",
+            "message": "",
             "esc_html": 0
         },
         {
@@ -1468,13 +1474,20 @@
                 [
                     {
                         "field": "field_55dc2db2e7a4f",
-                        "operator": "!=",
+                        "operator": "==",
                         "value": "165"
                     },
                     {
                         "field": "field_55dc61325be8b",
                         "operator": "!=",
                         "value": "No Upgrade"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_55dc2db2e7a4f",
+                        "operator": "==",
+                        "value": "330"
                     }
                 ],
                 [
@@ -1557,6 +1570,20 @@
                         "field": "field_55dc61325be8b",
                         "operator": "!=",
                         "value": "No Upgrade"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_55dc2db2e7a4f",
+                        "operator": "==",
+                        "value": "550"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_55dc2db2e7a4f",
+                        "operator": "==",
+                        "value": "330"
                     }
                 ]
             ],
@@ -2534,6 +2561,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1442078681,
-    "local": "json"
+    "modified": 1442253822
 }
