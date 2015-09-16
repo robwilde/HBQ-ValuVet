@@ -60,10 +60,12 @@
 				? get_field( 'custom_headline' )
 				: $standard_section;
 
-			$location = get_field( 'address_city' ) . ',' . get_field( 'address_state' );
+			$location = get_field( 'address_city' ) . ', ' . get_field( 'address_state' );
 			$headline = get_field( 'practice_is_for' ) . ' - ' . $custom_section . ' - ' . $location;
 
 			$out = '<h3>' . $headline . '</h3>';
+			$out .= '<div class="hr hr-default"><span class="hr-inner "><span class="hr-inner-style"></span></span></div>';
+
 
 			return $out;
 		}
@@ -104,7 +106,14 @@
 				: $short_description_2;
 
 			$out .= '</p>';
+			$out .= '<div class="hr hr-default"><span class="hr-inner "><span class="hr-inner-style"></span></span></div>';
+			
+			
 
+			
+			$out .= '<h3>Practice Details:</h3>';
+			
+			
 			return $out;
 		}
 		/**/
@@ -172,7 +181,8 @@
 				return;
 			}
 
-
+		    $out = '<h3>Property Details:</h3>';
+		
 			$out = '<h4>Type of Practice</h4>';
 			$out .= '<ul>';
 
@@ -224,13 +234,17 @@
 
 		/**/
 		public function property_staff() {
+		
+			if ( $this->add_package !== 3 ) {
+				return;
+			}
 
 			$full_time_vets       = get_field_object( 'full_time_vets' );
 			$full_time_vets_value = get_field( 'full_time_vets' );
 			$full_time_vets_label = $full_time_vets['choices'][ $full_time_vets_value ];
 
 			$full_time_nurses = get_field( 'full_time_nurses' );
-
+	
 			$out = '<h4>Staff</h4>';
 
 			$out .= '<ul>';
@@ -263,8 +277,7 @@
 			$building_area      = get_field( 'building_area' );
 			$branch_clinics     = get_field( 'branch_clinics' );
 			$days_open          = get_field( 'days_open' );
-			$kennels            = get_field( 'kennels' );
-			$stables            = get_field( 'stables' );
+
 			$off_street_parking = get_field( 'off_street_parking' );
 			$car_spaces         = get_field( 'car_spaces' );
 
@@ -283,11 +296,14 @@
 			$realestate_is_for  = get_field( 'realestate_is_for' );
 			$building_ownership = get_field( 'ownership' );
 
-			if ( $realestate_is_for == 'for_lease' || $building_ownership == 'rented' ) {
+			if ( $realestate_is_for == 'for_lease' && $building_ownership == 'rented' ) {
 				$real_estate_lease_details = get_field( 'real_estate_lease_details' );
 				$out .= '<li><em>Building is for Lease:</em> ' . $real_estate_lease_details . '</li>';
-			} else if ( $realestate_is_for == 'for_lease' || $building_ownership == 'owned' ) {
-				$out .= '';
+			} else if ( $realestate_is_for == 'for_lease' && $building_ownership == 'owned' ) {
+				$out .= '<li><em>Building is for Lease:</em> ' . $real_estate_lease_details . '</li>';
+			} else if ( $practice_is_for == 'For Lease' && $building_ownership == 'owned' ) {
+				$practice_lease_details = get_field( 'practice_lease_details' );
+				$out .= '<li><em>Practice is for Lease:</em> ' . $practice_lease_details . '</li>';
 			}
 
 			/**
@@ -330,19 +346,26 @@
 			 *
 			 *
 			 * /**/
-
+			if ($building_area) {
 			$out .= '<li><em>Building Area:</em> ' . $building_area . ' sqm</li>';
-
-			$out .= '<li><em>Facilities Include:</em> ';
-			if ( $kennels || $stables ) {
-				$out .= 'Kennels, Stables';
-			} else if ( $kennels || ! $stables ) {
-				$out .= 'Kennels';
-			} else if ( ! $kennels || $stables ) {
-				$out .= 'Stables';
 			}
-			$out .= '</li>';
 
+
+			$kennels = get_field( 'kennels' );
+			$stables  = get_field( 'stables' );
+	
+			if ( $kennels  || $stables  ) {
+				$out .= '<li><em>Facilities Include: </em>';				
+				if  ($kennels && $stables) {	
+				$out .=  'Kennels, Stables';
+				} else if ($kennels && !$stables) {	
+				$out .=  'Kennels';
+				} else if (! $kennels && $stables) {	
+				$out .=  'Stables';
+				}				
+				$out .= '</li>';								
+			}
+				       
 			if ( $off_street_parking ) {
 				$out .= '<li><em>Car Parks:</em> ' . $car_spaces . '</li>';
 			}
@@ -451,7 +474,11 @@
 				return;
 			}
 
-			$out = '<h3>The Business:</h3>';
+			$out = '<div class="hr hr-default"><span class="hr-inner "><span class="hr-inner-style"></span></span></div>';
+
+
+
+			$out .= '<h3>The Business:</h3>';
 			$out .= '<p>' . get_field( 'business_description' ) . '</p>';
 
 			$out .= '<h3>The Opportunity:</h3>';
