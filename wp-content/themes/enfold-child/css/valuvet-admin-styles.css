@@ -15,3 +15,7 @@
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
 
 }
+
+input.acf-is-appended.animals-fields-border{
+    border-color: red !important;
+}

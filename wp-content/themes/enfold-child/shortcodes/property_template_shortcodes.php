@@ -100,19 +100,15 @@
 
 			$out = '<h6>Overview Description:</h6>';
 			$out .= '<p>';
-
 			$out .= ( get_field( 'advertisement_package' ) == '165' )
 				? $short_description_1
 				: $short_description_2;
-
 			$out .= '</p>';
 			$out .= '<div class="hr hr-default"><span class="hr-inner "><span class="hr-inner-style"></span></span></div>';
 			
-			
-
-			
+			if ( $this->add_package == 3 ) {
 			$out .= '<h3>Practice Details:</h3>';
-			
+			}
 			
 			return $out;
 		}
@@ -473,10 +469,7 @@
 			if ( $this->add_package !== 3 ) {
 				return;
 			}
-
 			$out = '<div class="hr hr-default"><span class="hr-inner "><span class="hr-inner-style"></span></span></div>';
-
-
 
 			$out .= '<h3>The Business:</h3>';
 			$out .= '<p>' . get_field( 'business_description' ) . '</p>';

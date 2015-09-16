@@ -1883,7 +1883,9 @@
                 "owned": "Building Owned",
                 "rented": "Building Rented"
             },
-            "default_value": [],
+            "default_value": [
+                
+            ],
             "allow_null": 0,
             "multiple": 0,
             "ui": 0,
@@ -2081,7 +2083,9 @@
                 "Custom Built Program": "Custom Built Program",
                 "Other": "Other"
             },
-            "default_value": [],
+            "default_value": [
+                
+            ],
             "allow_null": 0,
             "multiple": 0,
             "ui": 1,
@@ -2292,7 +2296,9 @@
                 "Exotics": "Exotics",
                 "Fauna": "Fauna"
             },
-            "default_value": [],
+            "default_value": [
+                
+            ],
             "layout": "vertical",
             "toggle": 0
         },
@@ -2314,7 +2320,9 @@
                 "Stud": "Stud",
                 "Stables": "Stables"
             },
-            "default_value": [],
+            "default_value": [
+                
+            ],
             "layout": "vertical",
             "toggle": 0
         },
@@ -2336,7 +2344,9 @@
                 "Dairy": "Dairy",
                 "Stud": "Stud"
             },
-            "default_value": [],
+            "default_value": [
+                
+            ],
             "layout": "vertical",
             "toggle": 0
         },
@@ -2359,7 +2369,9 @@
                 "Caprine": "Caprine",
                 "Camelid": "Camelid"
             },
-            "default_value": [],
+            "default_value": [
+                
+            ],
             "layout": "vertical",
             "toggle": 0
         },
@@ -2448,7 +2460,9 @@
                 "House Calls": "House Calls",
                 "Endoscopy": "Endoscopy"
             },
-            "default_value": [],
+            "default_value": [
+                
+            ],
             "layout": "horizontal",
             "toggle": 0
         },
@@ -2493,7 +2507,9 @@
                 "Merchandising": "Merchandising",
                 "Export Certificate": "Export Certificate"
             },
-            "default_value": [],
+            "default_value": [
+                
+            ],
             "layout": "horizontal",
             "toggle": 0
         },
@@ -2551,5 +2567,6 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1442311077
+    "modified": 1442379331,
+    "local": "json"
 }

@@ -10,7 +10,7 @@
 			 * Create the config array for the shortcode button
 			 */
 			function shortcode_insert_button() {
-				$this->config['name']      = __( 'Valuvet Image', 'avia_framework' );
+				$this->config['name']      = __( 'ValuVet Image', 'avia_framework' );
 				$this->config['tab']       = __( 'Media Elements', 'avia_framework' );
 				$this->config['icon']      = AviaBuilder::$path['imagesURL'] . "sc-image.png";
 				$this->config['order']     = 100;
@@ -433,7 +433,8 @@
 							$output .= "{$overlay}<img class='avia_image suppress-tooltip' src='{$src}' alt='{$alt}' title='{$title}'  $markup_url />";
 						}
 						$output .= "</div>";
-						$output .= "</div>";
+						$output .= "</div>";					
+						$output .= '<div class="hr hr-default"><span class="hr-inner "><span class="hr-inner-style"></span></span></div>';
 					}
 
 

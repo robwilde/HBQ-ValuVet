@@ -14,7 +14,7 @@
 			 * Create the config array for the shortcode button
 			 */
 			function shortcode_insert_button() {
-				$this->config['name']       = __( 'Valuvet Gallery', 'avia_framework' );
+				$this->config['name']       = __( 'ValuVet Gallery', 'avia_framework' );
 				$this->config['tab']        = __( 'Media Elements', 'avia_framework' );
 				$this->config['icon']       = AviaBuilder::$path['imagesURL'] . "sc-gallery.png";
 				$this->config['order']      = 6;
@@ -196,6 +196,10 @@
 						'echo'          => false,
 						'custom_markup' => $meta['custom_markup']
 					) );
+					
+					$output .= '<div class="hr hr-default"><span class="hr-inner "><span class="hr-inner-style"></span></span></div>';
+					$output .= '<h3>Image Gallery</h3><br/>';
+					
 					$output .= "<div class='avia-gallery avia-gallery-" . self::$gallery . " " . $lazyload . " avia_animate_when_visible " . $meta['el_class'] . "' $markup>";
 					$thumbs  = "";
 					$counter = 0;
@@ -244,6 +248,8 @@
 
 					$output .= "<div class='avia-gallery-thumb'>{$thumbs}</div>";
 					$output .= "</div>";
+		
+					
 
 					$selector = ! empty( $atts['ajax_request'] ) ? ".ajax_slide" : "";
 
