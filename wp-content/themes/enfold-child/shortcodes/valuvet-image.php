@@ -276,7 +276,7 @@
 			 */
 			function getPrimaryImage( $postID ) {
 
-				$primary_image = [ ];
+				$primary_image = array();
 
 				$image = get_field( 'primary_image', $postID );
 				// vars
