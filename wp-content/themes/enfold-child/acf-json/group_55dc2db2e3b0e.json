@@ -1164,11 +1164,6 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_55dc2db2e7a4f",
-                        "operator": "==",
-                        "value": "165"
-                    },
-                    {
                         "field": "field_55dc61325be8b",
                         "operator": "==",
                         "value": "Upgrade to Level 2"
@@ -1192,11 +1187,6 @@
             "required": 0,
             "conditional_logic": [
                 [
-                    {
-                        "field": "field_55dc2db2e7a4f",
-                        "operator": "==",
-                        "value": "165"
-                    },
                     {
                         "field": "field_55dc61325be8b",
                         "operator": "==",
@@ -2561,5 +2551,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1442253822
+    "modified": 1442311077
 }

@@ -6,21 +6,21 @@
 	 */
 	class VALUVET_SHORTCODES {
 
-		public static $add_package;
+		public $add_package;
 
-		public static function getAddPackage() {
+		public function getAddPackage() {
 			$_add_package = get_field( 'advertisement_package' );
-			$package = '';
+			$package      = '';
 
 			switch ( $_add_package ) {
 				case '165':
-					$package = 'p1';
+					$package = 1;
 					break;
 				case '330':
-					$package = 'p2';
+					$package = 2;
 					break;
 				case '550':
-					$package = 'p3';
+					$package = 3;
 					break;
 
 			}
@@ -29,24 +29,19 @@
 		}
 
 
-		public static function register_shortcodes() {
+		public function __construct() {
 			/* Add list of Shortcode here  - function is below */
-			add_shortcode( 'property_title', array( __CLASS__, 'property_title' ) );
-			add_shortcode( 'property_address', array( __CLASS__, 'property_address' ) );
-			add_shortcode( 'property_overview_desc', array( __CLASS__, 'property_overview_desc' ) );
-			add_shortcode( 'property_price', array( __CLASS__, 'property_price' ) );
-			add_shortcode( 'property_snapshot', array( __CLASS__, 'property_snapshot' ) );
-			add_shortcode( 'property_type_of_practice', array( __CLASS__, 'property_type_of_practice' ) );
-			add_shortcode( 'property_staff', array( __CLASS__, 'property_staff' ) );
-			add_shortcode( 'property_facilities', array( __CLASS__, 'property_facilities' ) );
-			add_shortcode( 'property_services_professional', array( __CLASS__, 'property_services_professional' ) );
-			add_shortcode( 'property_services_ancillary', array( __CLASS__, 'property_services_ancillary' ) );
-			add_shortcode( 'property_desc_business', array( __CLASS__, 'property_desc_business' ) );
-			add_shortcode( 'property_desc_opportunity', array( __CLASS__, 'property_desc_opportunity' ) );
-			add_shortcode( 'property_desc_location', array( __CLASS__, 'property_desc_location' ) );
-
-			self::$add_package = self::getAddPackage();
-
+			add_shortcode( 'property_title', array( $this, 'property_title' ) );
+			add_shortcode( 'property_address', array( $this, 'property_address' ) );
+			add_shortcode( 'property_overview_desc', array( $this, 'property_overview_desc' ) );
+			add_shortcode( 'property_price', array( $this, 'property_price' ) );
+			add_shortcode( 'property_snapshot', array( $this, 'property_snapshot' ) );
+			add_shortcode( 'property_type_of_practice', array( $this, 'property_type_of_practice' ) );
+			add_shortcode( 'property_staff', array( $this, 'property_staff' ) );
+			add_shortcode( 'property_facilities', array( $this, 'property_facilities' ) );
+			add_shortcode( 'property_services_professional', array( $this, 'property_services_professional' ) );
+			add_shortcode( 'property_services_ancillary', array( $this, 'property_services_ancillary' ) );
+			add_shortcode( 'property_three_fields', array( $this, 'property_three_fields' ) );
 		}
 		/* add shortcode Function here */
 
@@ -55,25 +50,13 @@
 		-------------------------------------------------------------------------------*/
 
 		/**/
-		public static function property_title() {
+		public function property_title() {
 
-			$headline_select = get_field( 'headline_select' );
+			$this->add_package = $this->getAddPackage();
 
+			$headline_select  = get_field( 'headline_select' );
 			$standard_section = get_field( 'practice_type' ) . ' ' . get_field( 'building_type' );
-			/* @TODO -------------------------------------------------------- LOGGING --------------------------------------------------- */
-			if ( function_exists( '_log' ) ) {
-				_log( array(
-					'FILE_NAME'       => basename( __FILE__ ),
-					'LINE'            => ( __LINE__ ),
-					'HEADLINE_SELECT' => $headline_select,
-					'STANDARD'        => $standard_section,
-					'ADD_PACKAGE'     => self::$add_package,
-					'POST_ID'         => get_the_ID()
-				) );
-			}
-			/*--------------------------------------------------------- LOGGING ------------------------------------------------------------*/
-
-			$custom_section = ( $headline_select == 'Custom Headline' )
+			$custom_section   = ( $headline_select == 'Custom Headline' )
 				? get_field( 'custom_headline' )
 				: $standard_section;
 
@@ -91,7 +74,7 @@
 		-------------------------------------------------------------------------------*/
 
 		/**/
-		public static function property_address() {
+		public function property_address() {
 
 			$out = '<h6>Business Name:</strong></h6>';
 			$out .= '<p>' . get_field( 'practice_name' ) . '</p>';
@@ -108,7 +91,7 @@
 		-------------------------------------------------------------------------------*/
 
 		/**/
-		public static function property_overview_desc() {
+		public function property_overview_desc() {
 
 			$short_description_1 = get_field( 'short_description_1' );
 			$short_description_2 = get_field( 'short_description_2' );
@@ -131,7 +114,7 @@
 		-------------------------------------------------------------------------------*/
 
 		/**/
-		public static function property_price() {
+		public function property_price() {
 
 			$show_asking_price = get_field( 'show_asking_price' );
 			$total_value       = get_field( 'total_value' );
@@ -153,7 +136,7 @@
 		-------------------------------------------------------------------------------*/
 
 		/**/
-		public static function property_snapshot() {
+		public function property_snapshot() {
 
 			$practice_type       = get_field( 'practice_type' );
 			$practice_type_label = ( $practice_type != 'other' )
@@ -183,7 +166,12 @@
 		-------------------------------------------------------------------------------*/
 
 		/**/
-		public static function property_type_of_practice() {
+		public function property_type_of_practice() {
+
+			if ( $this->add_package !== 3 ) {
+				return;
+			}
+
 
 			$out = '<h4>Type of Practice</h4>';
 			$out .= '<ul>';
@@ -235,7 +223,7 @@
 		-------------------------------------------------------------------------------*/
 
 		/**/
-		public static function property_staff() {
+		public function property_staff() {
 
 			$full_time_vets       = get_field_object( 'full_time_vets' );
 			$full_time_vets_value = get_field( 'full_time_vets' );
@@ -266,7 +254,11 @@
 		-------------------------------------------------------------------------------*/
 
 		/**/
-		public static function property_facilities() {
+		public function property_facilities() {
+
+			if ( $this->add_package !== 3 ) {
+				return;
+			}
 
 			$building_area      = get_field( 'building_area' );
 			$branch_clinics     = get_field( 'branch_clinics' );
@@ -339,7 +331,6 @@
 			 *
 			 * /**/
 
-
 			$out .= '<li><em>Building Area:</em> ' . $building_area . ' sqm</li>';
 
 			$out .= '<li><em>Facilities Include:</em> ';
@@ -355,20 +346,6 @@
 			if ( $off_street_parking ) {
 				$out .= '<li><em>Car Parks:</em> ' . $car_spaces . '</li>';
 			}
-
-
-			/**
-			 * if (get_field('practice_type') == 'other') {
-			 * $other_type = get_field('other_type');
-			 * $practice_type_label = $other_type;
-			 * } else {
-			 * $practice_type = get_field_object('practice_type');
-			 * $practice_type_value = get_field('practice_type');
-			 * $practice_type_label = $practice_type['choices'][$practice_type_value];
-			 * }
-			 *
-			 *
-			 * /**/
 
 			if ( get_field( 'computer_software' ) == 'Other' ) {
 				$other_software          = get_field( 'other_software' );
@@ -386,7 +363,6 @@
 				$out .= '<li><em>No. Computers:</em> ' . $number_of_computer . '</li>';
 			}
 
-
 			$out .= '</ul>';
 
 			return $out;
@@ -398,7 +374,11 @@
 		-------------------------------------------------------------------------------*/
 
 		/**/
-		public static function property_services_professional() {
+		public function property_services_professional() {
+
+			if ( $this->add_package !== 3 ) {
+				return;
+			}
 
 			$out                         = '';
 			$professional_services       = get_field_object( 'professional_services' );
@@ -428,7 +408,11 @@
 		-------------------------------------------------------------------------------*/
 
 		/**/
-		public static function property_services_ancillary() {
+		public function property_services_ancillary() {
+
+			if ( $this->add_package !== 3 ) {
+				return;
+			}
 
 			$out                      = '';
 			$ancillary_service_field  = get_field( 'ancillary_services' );
@@ -455,38 +439,35 @@
 		/**/
 
 		/*-------------------------------------------------------------------------------
-			THE BUSINESS
+			PACKAGE 3 FIELDS
 		-------------------------------------------------------------------------------*/
 
-		/**/
-		public static function property_desc_business() {
-
-			return get_field( 'business_description' );
-		}
-		/**/
-
-		/*-------------------------------------------------------------------------------
-			THE OPPORTUNITY
-		-------------------------------------------------------------------------------*/
+		// [business_description]-[business_opportunity]-[business_opportunity]
 
 		/**/
-		public static function property_desc_opportunity() {
+		public function property_three_fields() {
 
-			return get_field( 'business_opportunity' );
-		}
-		/**/
+			if ( $this->add_package !== 3 ) {
+				return;
+			}
 
-		/*-------------------------------------------------------------------------------
-			THE LOCATION
-		-------------------------------------------------------------------------------*/
+			$out = '<h3>The Business:</h3>';
+			$out .= '<p>' . get_field( 'business_description' ) . '</p>';
 
-		/**/
-		public static function property_desc_location() {
+			$out .= '<h3>The Opportunity:</h3>';
+			$out .= '<p>' . get_field( 'business_opportunity' ) . '</p>';
 
-			return get_field( 'business_location' );
+			$out .= '<h3>The Location:</h3>';
+			$out .= '<p>' . get_field( 'business_location' ) . '</p>';
+
+			$out .= '</div>';
+
+			return $out;
+
 		}
 		/**/
 
 	}
 
-	VALUVET_SHORTCODES::register_shortcodes();
+
+	new VALUVET_SHORTCODES();

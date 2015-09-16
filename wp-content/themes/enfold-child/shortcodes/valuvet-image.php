@@ -353,7 +353,11 @@
 
 				extract( $atts );
 
-				$primary_image = $this->getPrimaryImage( get_the_ID() );
+				$post_id = get_the_ID();
+
+				$primary_image = ( get_field( 'advertisement_package', $post_id ) == '165')
+					? ''
+					: $this->getPrimaryImage( $post_id );
 
 				if ( ! empty( $primary_image ) ) {
 
