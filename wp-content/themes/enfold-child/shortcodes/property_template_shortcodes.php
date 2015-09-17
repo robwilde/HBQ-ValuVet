@@ -22,7 +22,6 @@
 				case '550':
 					$package = 3;
 					break;
-
 			}
 
 			return $package;
@@ -105,11 +104,11 @@
 				: $short_description_2;
 			$out .= '</p>';
 			$out .= '<div class="hr hr-default"><span class="hr-inner "><span class="hr-inner-style"></span></span></div>';
-			
+
 			if ( $this->add_package == 3 ) {
 			$out .= '<h3>Practice Details:</h3>';
 			}
-			
+
 			return $out;
 		}
 		/**/
@@ -178,7 +177,7 @@
 			}
 
 		    $out = '<h3>Property Details:</h3>';
-		
+
 			$out = '<h4>Type of Practice</h4>';
 			$out .= '<ul>';
 
@@ -230,7 +229,7 @@
 
 		/**/
 		public function property_staff() {
-		
+
 			if ( $this->add_package !== 3 ) {
 				return;
 			}
@@ -240,7 +239,7 @@
 			$full_time_vets_label = $full_time_vets['choices'][ $full_time_vets_value ];
 
 			$full_time_nurses = get_field( 'full_time_nurses' );
-	
+
 			$out = '<h4>Staff</h4>';
 
 			$out .= '<ul>';
@@ -349,19 +348,19 @@
 
 			$kennels = get_field( 'kennels' );
 			$stables  = get_field( 'stables' );
-	
+
 			if ( $kennels  || $stables  ) {
-				$out .= '<li><em>Facilities Include: </em>';				
-				if  ($kennels && $stables) {	
+				$out .= '<li><em>Facilities Include: </em>';
+				if  ($kennels && $stables) {
 				$out .=  'Kennels, Stables';
-				} else if ($kennels && !$stables) {	
+				} else if ($kennels && !$stables) {
 				$out .=  'Kennels';
-				} else if (! $kennels && $stables) {	
+				} else if (! $kennels && $stables) {
 				$out .=  'Stables';
-				}				
-				$out .= '</li>';								
+				}
+				$out .= '</li>';
 			}
-				       
+
 			if ( $off_street_parking ) {
 				$out .= '<li><em>Car Parks:</em> ' . $car_spaces . '</li>';
 			}

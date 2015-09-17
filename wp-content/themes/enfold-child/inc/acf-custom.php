@@ -454,17 +454,11 @@
 					$smallAnimal.change(function () {
 						$this = $(this);
 						var input = parseInt($this.val());
+
 						var otherFields = parseInt($equine.val()) + parseInt($bovine.val()) + parseInt($other.val());
 						var max = 100 - otherFields;
 
-						total = input + otherFields;
-						console.log(total);
-
-						if (total > 100) {
-							$this.addClass('animals-fields-border');
-						} else {
-							$this.removeClass('animals-fields-border');
-						}
+						$this.attr("max", max);
 
 					});
 
@@ -472,14 +466,10 @@
 						$this = $(this);
 						var input = parseInt($this.val());
 
-						total = parseInt($smallAnimal.val()) + input + parseInt($bovine.val()) + parseInt($other.val());
-						console.log(total);
+						var otherFields = parseInt($smallAnimal.val()) + parseInt($bovine.val()) + parseInt($other.val());
+						var max = 100 - otherFields;
 
-						if (total > 100) {
-							$this.addClass('animals-fields-border');
-						} else {
-							$this.removeClass('animals-fields-border');
-						}
+						$this.attr("max", max);
 
 					});
 
@@ -487,14 +477,10 @@
 						$this = $(this);
 						var input = parseInt($this.val());
 
-						total = parseInt($smallAnimal.val()) + parseInt($equine.val()) + input + parseInt($other.val());
-						console.log(total);
+						var otherFields = parseInt($smallAnimal.val()) + parseInt($equine.val()) + parseInt($other.val());
+						var max = 100 - otherFields;
 
-						if (total > 100) {
-							$this.addClass('animals-fields-border');
-						} else {
-							$this.removeClass('animals-fields-border');
-						}
+						$this.attr("max", max);
 
 					});
 
@@ -502,14 +488,10 @@
 						$this = $(this);
 						var input = parseInt($this.val());
 
-						total = parseInt($smallAnimal.val()) + parseInt($equine.val()) + parseInt($bovine.val()) + input;
-						console.log(total);
+						var otherFields = parseInt($smallAnimal.val()) + parseInt($equine.val()) + parseInt($bovine.val());
+						var max = 100 - otherFields;
 
-						if (total > 100) {
-							$this.addClass('animals-fields-border');
-						} else {
-							$this.removeClass('animals-fields-border');
-						}
+						$this.attr("max", max);
 
 					});
 
